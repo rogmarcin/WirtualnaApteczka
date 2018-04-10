@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+> Aplikacja *Wirtualna Apteczka* zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczne i co ważniejsze jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza. 
 
-You can use the [editor on GitHub](https://github.com/rogmarcin/bai/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+![](http://v-ie.uek.krakow.pl/~s190804/3.jpg) ![](http://v-ie.uek.krakow.pl/~s190804/2.jpg)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Funkcjonalności
 
-### Markdown
+- Uwierzytelnianie użytkownika w aplikacji (podejście tradycyjne - login i hasło oraz przy użyciu kont społecznościowych).
+- Tworzenie zawartości wirtualnej apteczki w procesie dodawania jej elementów.
+- Pobieranie bardziej szczegółowych informacji (ulotek) o posiadanych lekach poprzez zewnętrzne API (np w przypadku gdy zgubiliśmy ulotkę i nie wiemy jakie jest dawkowanie).
+- Przeszukiwanie składników apteczki pod kątem leków na konkretne schorzenie.
+- Informowanie użytkownika końcowego o lekach przeterminowanych.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Skład zespołu projektowego:
 
-```markdown
-Syntax highlighted code block
+- Marcin Róg, 190804, KrZUIs2012, kierownik projektu
+- Dariusz Śpicha, 189864, KrZUIs2012
+- Piotr Wójcikiewicz, 189957, KrZUIs2012
+- Mateusz Lis, 189459, KrZUIs2011
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rogmarcin/bai/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Linki do: [Trello](https://trello.com/b/WSEx3njt/bai-project), [Prototypu](https://marvelapp.com/50j70c1/screen/40631680)                oraz [Raportu prac](https://docs.google.com/spreadsheets/d/1YVdTL1Zja5aQZH5QC62PctRy5FQ39eq1WUqobofWAsE/edit#gid=0) 
