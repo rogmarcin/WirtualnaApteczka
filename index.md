@@ -1,4 +1,3 @@
-## Wirtualna Apteczka
 > Aplikacja *Wirtualna Apteczka* zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczne i co ważniejsze jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza. 
 
 ![](http://v-ie.uek.krakow.pl/~s190804/3.jpg) ![](http://v-ie.uek.krakow.pl/~s190804/2.jpg)
