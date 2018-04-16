@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-		id          = "myfirstapp"
+		id          = "wirtualnaApteczka"
         version     = "1.0.0" >
 
-    <name>First app</name>
-    <description>My first mobile app</description>
-    <author href="http://mypersonalwebsite.com" email="johnbrown@gmail.com">
-		John Brown
+    <name>WirtualnaApteczka</name>
+    <description>Aplikacja hybrydowa zrealizowana w ramach przedmiotu Bogate Aplikacje Internetowe</description>
+    <author>
+		Marcin Róg, Mateusz Lis, Dariusz Śpicha, Piotr Wójcikiewicz
 	</author>
 	<platform name="android" />
-	
+	<icon src="www/img/logo.jpg" />
 	<plugin name="cordova-plugin-device" spec="2.0.1" />
 	<plugin name="cordova-plugin-dialogs" spec="2.0.1" />
 
