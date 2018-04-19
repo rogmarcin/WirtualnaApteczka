@@ -1,13 +1,195 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<script src="js/pgb.js"></script>
-		<script src="cordova.js"></script>
-        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-        <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	</head>
-	<body onload="init()">
-	</body>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <script src="js/pgb.js"></script>
+    <script src="cordova.js"></script>
+    <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+    <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Theme -->
+
+</head>
+
+<body onload="init()">
+
+    <!-- Start of first page -->
+    <div data-role="page" id="start">
+
+        <div data-role="header">
+
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content">
+            <h1>
+                <center> Wirtualna Apteczka </center>
+            </h1>
+            <p>
+                <center><img src="img/apteczka.jpg" /></center>
+            </p>
+
+        </div>
+        <!-- /content -->
+
+        <div data-role="footer">
+            <h4>
+                <a href="#sign"><input type="button" value="Sign up" id="sign" /></a> <input type="button" value="Log in" /></h4>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="sign">
+
+        <div data-role="header">
+            <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+            <h1>
+                <center>Create an account</center>
+            </h1>
+        </div>
+        <!-- /header -->
+
+        <div role="main " class="ui-content ">
+            <form>
+                <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
+                <br>
+                <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
+                <br>
+                <input data-clear-btn="true" name="password-2" placeholder="Confirm Password" id="password-2" value="" autocomplete="off" type="password">
+                <br><br>
+
+                <input name="checkbox-0 " type="checkbox" />
+                <a href="#Regulamin">Akceptuje Regulamin</a>
+
+                <input name="checkbox-0 " type="checkbox" />
+                <a href="#Politic">Akceptuje Politykę Prywatności</a>
+
+            </form>
+            <h4>
+                <center><a href="#user_account" class="ui-btn">Sign up</a></center>
+
+            </h4>
+        </div>
+        <!-- /content -->
+
+    </div>
+    <!-- /page -->
+
+    <!-- Page Regulamin -->
+    <div data-role="page" id="Regulamin">
+
+        <div data-role="header">
+            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+            <h1>
+                <center>Regulamin</center>
+            </h1>
+        </div>
+        <div role="main " class="ui-content ">
+            Regulamin serwisu
+        </div>
+        <!-- /page -->
+    </div>
+
+    <!-- Page Polityka -->
+    <div data-role="page" id="Politic">
+
+        <div data-role="header">
+            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+            <h1>
+                <center>Polityka prywatności</center>
+            </h1>
+        </div>
+        <div role="main " class="ui-content ">
+            Polityka prywatności
+        </div>
+    </div>
+    <!-- /page -->
+
+    <!-- Page user account -->
+    <div data-role="page" id="user_account">
+
+        <div data-role="header">
+            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+            <center>Wirtualna Apteczka</center>
+        </div>
+
+        <!-- Miejsce na wstawienie avatara użytkownika-->
+        <div role="main" class="ui-content">
+            <center>
+                <img src="img/avatar.jpg">
+                <p>
+                    <h1>Jan Kowalski</h1>
+                </p>
+            </center>
+        </div>
+
+        <div>
+            <ul data-role="listview" data-insert="true">
+                <li>
+                    <a href="#list_of_medicines">
+                        <img src="img/apteczka1.jpg">
+                        <h2>Twoja Apteczka</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Settings">
+                        <img src="img/setings.png">
+                        <h2>Ustawienia konta</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#sign">
+                        <img src="img/logout.jpg">
+                        <h2>Wyloguj</h2>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- page list of medicines -->
+
+    <div data-role="page" id="list_of_medicines">
+        <div data-role="header">
+            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+            <center>Lista leków w Apteczce</center>
+            <a href="#user_account" class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext">no text</a>
+            <a href="#user_account" class="ui-btn ui-icon-search ui-btn-icon-right ui-btn-icon-notext">no text</a>
+        </div>
+
+        <div data-role="main" class="ui-content">
+
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <a href="#list_of_medicines">
+                        <img src="img/apap.jpg">
+                        <h2>Apap</h2>
+                        <button class="ui-btn ui-shadow ui-btn-icon-right ui-icon-myicon">Przeterminowany</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#list_of_medicines">
+                        <img src="img/ibuprom.png">
+                        <h2>Ibuprom MAX</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#list_of_medicines">
+                        <img src="img/lek 2.jpg">
+                        <h2>Na ból d..</h2>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</body>
+
 </html>

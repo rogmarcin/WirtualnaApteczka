@@ -1,0 +1,17 @@
+#botton1 {
+    float: left;
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+#botton2 {
+    float: right;
+    width: 50%;
+    background-color: lightgreen;
+}
+
+.ui-icon-myicon:after {
+    background-image: url("img/ikona_czaszka.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
