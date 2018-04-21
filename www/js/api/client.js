@@ -16,6 +16,8 @@ var ApiClient = (function () {
             
             var onEndRequest;
             
+            var alertFunction;
+            
             function request(url, params, callback) {
                 if(typeof parent.onBeginRequest !== "undefined") {
                     parent.onBeginRequest();
@@ -44,8 +46,13 @@ var ApiClient = (function () {
                      * @returns {undefined}
                      */
                     error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR);
-                        alert("Wystąpił błąd: " + jqXHR.state());
+                        console.error(jqXHR);
+                        var msg = "Wystąpił błąd: " + jqXHR.state();
+                        if(typeof parent.alertFunction !== "undefined") {
+                            parent.alertFunction(msg);
+                        } else {
+                            alert(msg);
+                        }
                     },
                     complete: function() {
                         if(typeof parent.onEndRequest !== "undefined") {
@@ -136,6 +143,9 @@ var ApiClient = (function () {
                 },
                 setOnEndRequest: function(callback) {
                     parent.onEndRequest = callback;
+                },
+                setAlertFunction: function(callback) {
+                    parent.alertFunction = callback;
                 }
             };
         };
