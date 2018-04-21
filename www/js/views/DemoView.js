@@ -1,33 +1,6 @@
 /* global ApiClient */
 
-var MedicamentController = {
-  
-    search: function(query) {
-        ApiClient.getInstance().count(query, function(result) {
-            if(result.count === 0) {
-                alert('Nie znaleziono leku');
-            } else if(result.count === 1) {
-                ApiClient.getInstance().search(query, function(result) {
-                    MedicamentController.renderSearch(result);
-                });
-            } else {
-                ApiClient.getInstance().search(query, function(result) {
-                    MedicamentController.renderSearch(result);
-                });
-            }
-        });
-    },
-    
-    leaflet: function(id) {
-        ApiClient.getInstance().get(id, function(result) {
-            if(result.length === 0) {
-                alert("Brak ulotki dla wybranego leku");
-            } else {
-                MedicamentController.renderLeaflet(result);
-            }
-        });
-    },
-    
+DemoView = {
     renderSearch: function(medicaments) {
         var list = $('<ul>', {
             "data-role": "listview",
@@ -42,7 +15,7 @@ var MedicamentController = {
                 text: element.label,
                 "data-id": element.id,
                 href: "#",
-                onclick: "MedicamentController.leaflet($(this).data('id'))"
+                onclick: `(new MedicamentController('DemoView')).leaflet($(this).data('id'))`
             });
 
             var listElem = $('<li>').append(link);
@@ -56,14 +29,9 @@ var MedicamentController = {
     
     renderLeaflet(result) {
         var panelId = "#searchResults";
-        var leaflet = $('<div>');
-        leaflet.append(
-            $('<a>', {
-                text: "Close panel",
-                "data-rel": "close",
-                href: panelId
-            })
-        );
+        var leaflet = $('<div>', {
+            style: "overflow-y: auto"
+        });
         $.each(result, function(idx, element) {
             var header = $('<h3>', {
                 text: element.header
@@ -77,8 +45,9 @@ var MedicamentController = {
             leaflet.append(content);
         });
         
-        $(panelId).html(leaflet);
+        $(panelId).find('.ui-panel-inner').html(leaflet);
         $(panelId).trigger( "updatelayout" );
+        $(panelId).trigger( "create" );
         $(panelId).panel( "open" );
     }
 };

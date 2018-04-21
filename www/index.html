@@ -11,14 +11,16 @@
         <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
         
+        <script src="js/helpers/Helper.js"></script>
         <script src="js/api/client.js"></script>
-        <script src="js/controllers/medicament.js"></script>
+        <script src="js/views/DemoView.js"></script>
+        <script src="js/controllers/MedicamentController.js"></script>
 	</head>
 	<body onload="init()">
         <div data-role="page" id="searchDemo">
             <div data-role="header">Searching demo</div>
-            <div data-role="panel" data-position="left" data-display="overlay" id="searchResults">
-                
+            <div data-role="panel" data-position="left" data-display="reveal" id="searchResults">
+                <div class="ui-panel-inner"></div>
             </div>
             <div role="main" class="ui-content">
                 <div class="ui-field-contain">
@@ -34,7 +36,8 @@
                 function submitForm(event) {
                     event.stopPropagation();
                     var medicamentName = $('input[name="medicament"]').val();
-                    MedicamentController.search(medicamentName);
+                    var controller = new MedicamentController('DemoView');
+                    controller.search(medicamentName);
                     return false;
                 };
             </script>
