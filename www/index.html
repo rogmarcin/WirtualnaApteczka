@@ -8,7 +8,21 @@
         <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/api/client.js"></script>
+        <script src="js/controllers/medicament.js"></script>
 	</head>
 	<body onload="init()">
+        <form>
+            <label for="medicament"></label>
+            <input type="text" name="medicament" />
+            <script>
+                function submitForm() {
+                    var medicamentName = $('input[name="medicament"]').val();
+                    MedicamentController.search(medicamentName);
+                };
+            </script>
+            <button onclick="submitForm()">Szukaj leku</button>
+        </form>
+        <div id="searchResults">
+        </div>
 	</body>
 </html>

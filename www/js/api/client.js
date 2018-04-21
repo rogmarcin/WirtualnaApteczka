@@ -6,7 +6,7 @@ document.head.appendChild(imported);
 
 var ApiClient = (function () {
     var instance;
-
+    
     function createInstance() {
         var Object = function() {
             function request(url, params, callback) {
@@ -15,47 +15,97 @@ var ApiClient = (function () {
                     data: params,
                     method: 'get',
                     dataType: 'json',
-                    username: Config.clientId,
-                    password: Config.clientSecret,
+                    async: true,
+                    headers: {
+                        'Authorization': 'Basic '
+                        + btoa(Config.clientId + ":" + Config.clientSecret)
+                    },
                     success: function(data, textStatus, jqXHR) {
-                        console.log(data);
-                        
-                        if(callback !== null) {
+                        if(typeof callback !== "undefined") {
                             callback(data, textStatus);
                         }
                     },
+                    /**
+                     * 
+                     * @param {jqXHR} jqXHR
+                     * @param {string} textStatus
+                     * @param {string} errorThrown
+                     * @returns {undefined}
+                     */
                     error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(errorThrown);
+                        console.log(jqXHR);
+                        alert("Wystąpił błąd: " + jqXHR.state());
                     }    
                });
             };
             
-            var search = function(query) {
+            /**
+             * Search for medicament
+             * 
+             * @param {string} query Medicament name
+             * @param {function} callback Callback function calls on success.
+             *      Sygnature of the function: function(Object json);
+             * @returns {undefined}
+             */
+            var search = function(query, callback) {
                     request('/medicament', {
                         query: query
-                    }
+                    }, callback
                 );
             };
             
-            var count = function(query) {
-                    request('/count', {
+            /**
+             * Count number of founded medicament
+             * 
+             * @param {string} query Medicament name
+             * @param {function} callback Callback function calls on success.
+             *      Sygnature of the function: function(Object json);
+             * @returns {undefined}
+             */
+            var count = function(query, callback) {
+                    request('/medicament/count', {
                         query: query
-                    }
+                    }, callback
                 );
             };
             
-            var get = function(id) {
-                    request('/medicament/' + id + '/leaflet', {}, null
+            /**
+             * Count number of founded medicament
+             * 
+             * @param {integer} id Identifier od medicament
+             * @param {function} callback Callback function calls on success.
+             *      Sygnature of the function: function(Object json);
+             * @returns {undefined}
+             */
+            var get = function(id, callback) {
+                    request('/medicament/' + id + '/leaflet', {}, callback
                 );
             };
             
-            var summary = function(id) {
-                    request('/medicament/' + id + '/summary', {}, null
+            /**
+             * Gets summary of the medicament
+             * Summary contains real name, price if set, dosing, etc
+             * 
+             * @param {integer} id Identifier od medicament
+             * @param {function} callback Callback function calls on success.
+             *      Sygnature of the function: function(Object json);
+             * @returns {undefined}
+             */
+            var summary = function(id, callback) {
+                    request('/medicament/' + id + '/summary', {}, callback
                 );
             };
             
-            var name = function(id) {
-                    request('/medicament/' + id + '/name', {}, null
+            /**
+             * Get real name the medicamen
+             * 
+             * @param {integer} id Identifier od medicament
+             * @param {function} callback Callback function calls on success.
+             *      Sygnature of the function: function(Object json);
+             * @returns {undefined}
+             */
+            var name = function(id, callback) {
+                    request('/medicament/' + id + '/name', {}, callback
                 );
             };
 
@@ -63,7 +113,7 @@ var ApiClient = (function () {
                 search: search,
                 count: count,
                 get: get,
-                summary: get,
+                summary: summary,
                 name: name
             };
         };
@@ -73,9 +123,15 @@ var ApiClient = (function () {
 
     return {
         getInstance: function () {
+            if(!window.jQuery) {
+                console.error('jQuery is required');
+                return null;
+            }
+            
             if (!instance) {
                 instance = createInstance();
             }
+            
             return instance;
         }
     };
