@@ -17,6 +17,7 @@ var MedicamentController = {
             }
         });
     },
+    
     leaflet: function(id) {
         ApiClient.getInstance().get(id, function(result) {
             if(result.length === 0) {
@@ -26,13 +27,21 @@ var MedicamentController = {
             }
         });
     },
+    
     renderSearch: function(medicaments) {
-        var list = $('<ul>');
+        var list = $('<ul>', {
+            "data-role": "listview",
+            "data-filter": true,
+            "data-filter-placeholder": "Filtruj",
+            "data-inset": true,
+            "data-theme": "b"
+        });
         $.each(medicaments, function(idx, element) {
             console.log(idx, element);
             var link = $('<a>', {
                 text: element.label,
                 "data-id": element.id,
+                href: "#",
                 onclick: "MedicamentController.leaflet($(this).data('id'))"
             });
 
@@ -40,10 +49,21 @@ var MedicamentController = {
             list.append(listElem);
         });
         
-        $('#searchResults').html(list);
+        var panelId = "#link-results";
+        $(panelId).html(list);
+        $(panelId + " ul").listview();
     },
+    
     renderLeaflet(result) {
+        var panelId = "#searchResults";
         var leaflet = $('<div>');
+        leaflet.append(
+            $('<a>', {
+                text: "Close panel",
+                "data-rel": "close",
+                href: panelId
+            })
+        );
         $.each(result, function(idx, element) {
             var header = $('<h3>', {
                 text: element.header
@@ -57,6 +77,8 @@ var MedicamentController = {
             leaflet.append(content);
         });
         
-        $('#searchResults').html(leaflet);
+        $(panelId).html(leaflet);
+        $(panelId).trigger( "updatelayout" );
+        $(panelId).panel( "open" );
     }
 };

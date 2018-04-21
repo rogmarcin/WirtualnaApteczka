@@ -2,27 +2,42 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+        
 		<script src="js/pgb.js"></script>
 		<script src="cordova.js"></script>
-        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
         <script src="js/api/client.js"></script>
         <script src="js/controllers/medicament.js"></script>
 	</head>
 	<body onload="init()">
-        <form>
-            <label for="medicament"></label>
-            <input type="text" name="medicament" />
+        <div data-role="page" id="searchDemo">
+            <div data-role="header">Searching demo</div>
+            <div data-role="panel" data-position="left" data-display="overlay" id="searchResults">
+                
+            </div>
+            <div role="main" class="ui-content">
+                <div class="ui-field-contain">
+                    <input type="search" name="medicament" id="search-medicament" value=""/>
+                </div>
+                <button onclick="submitForm(event)" data-icon="search">Szukaj leku</button>
+                <div id="link-results"></div>
+            </div>
+            <div data-role="footer" style="text-align: center">
+                &COPY; bai-team 2018
+            </div>
             <script>
-                function submitForm() {
+                function submitForm(event) {
+                    event.stopPropagation();
                     var medicamentName = $('input[name="medicament"]').val();
                     MedicamentController.search(medicamentName);
+                    return false;
                 };
             </script>
-            <button onclick="submitForm()">Szukaj leku</button>
-        </form>
-        <div id="searchResults">
         </div>
 	</body>
 </html>
