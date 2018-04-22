@@ -14,8 +14,22 @@
 	<plugin name="cordova-plugin-device" spec="2.0.1" />
 	<plugin name="cordova-plugin-dialogs" spec="2.0.1" />
     
+    <!-- firebase login -->
+    <plugin name="cordova-plugin-buildinfo"  />
+	<plugin name="cordova-universal-links-plugin" />
+	<plugin name="cordova-plugin-browsertab"  />
+	<plugin name="cordova-plugin-inappbrowser" />
+    <!-- end -->
+    
     <plugin name="cordova-plugin-whitelist" source="npm" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
+    
+    <universal-links>
+        <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
+<!--        <host name="AUTH_DOMAIN" scheme="https">
+            <path url="/__/auth/callback"/>
+        </host>-->
+    </universal-links>
 </widget>
