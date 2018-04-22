@@ -5,11 +5,12 @@
     
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="cordova.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 </head>
-<body>
+<body onload="init()">
     <h1>Welcome to My App</h1>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
