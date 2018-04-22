@@ -15,3 +15,12 @@
     /* Make your icon fit */
     background-size: 18px 18px;
 }
+
+[data-role="header"],
+[data-role="footer"] {
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}

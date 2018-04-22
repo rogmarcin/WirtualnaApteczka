@@ -1,451 +1,455 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <script src="js/pgb.js"></script>
-    <script src="cordova.js"></script>
-    <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-    <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-    <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <!-- Theme -->
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/pgb.js"></script>
+        <script src="cordova.js"></script>
+        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        
+        <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+    </head>
 
-</head>
+    <body onload="init()">
+        <!-- Start of first page -->
+        <div data-role="page" id="start">
+            <div data-role="header" class="ui-header">
+            </div>
+            <!-- /header -->
 
-<body onload="init()">
+            <div role="main" class="ui-content text-center">
+                <div>
+                    <h1>Wirtualna Apteczka</h1>
+                    <img src="img/apteczka.jpg" style="max-width: 100%"/>
+                </div>
+            </div>
+            <!-- /content -->
 
-    <!-- Start of first page -->
-    <div data-role="page" id="start">
-
-        <div data-role="header">
-
-        </div>
-        <!-- /header -->
-
-        <div role="main" class="ui-content">
-            <h1>
-                <center> Wirtualna Apteczka </center>
-            </h1>
-            <p>
-                <center><img src="img/apteczka.jpg" /></center>
-            </p>
-
-        </div>
-        <!-- /content -->
-
-        <div data-role="footer">
-            <h4>
-                <a href="#sign"><input type="button" value="Sign up" id="sign"></a>
-                <a href="#login"><input type="button" value="Log in" /></a>
-            </h4>
-        </div>
-        <!-- /footer -->
-    </div>
-    <!-- /page -->
-
-    <!-- Start of second page -->
-    <div data-role="page" id="sign">
-
-        <div data-role="header">
-            <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Create an account</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <form>
-                <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
-                <br>
-                <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
-                <br>
-                <input data-clear-btn="true" name="password-2" placeholder="Confirm Password" id="password-2" value="" autocomplete="off" type="password">
-                <br><br>
-
-                <input name="checkbox-0 " type="checkbox" />
-                <a href="#Regulamin">Akceptuje Regulamin</a>
-
-                <input name="checkbox-0 " type="checkbox" />
-                <a href="#Politic">Akceptuje Politykę Prywatności</a>
-
-            </form>
-            <h4>
-                <center><a href="#user_account" class="ui-btn">Sign up</a></center>
-
-            </h4>
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Start page login -->
-    <div data-role="page" id="login">
-
-        <div data-role="header">
-            <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <h1>
-                <center>Login to your app</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <form>
-                <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
-                <br>
-                <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
-                <br>
-            </form>
-            <h3>
-                <center><a href="#user_account" class="ui-btn">Log in</a></center>
-            </h3>
-            <center>
-                <h4>
-                    <hr width="48%" align="left" style="float:left" /> or
-                    <hr width="48%" align="right" style="float:right" />
-                </h4>
-            </center>
-        </div>
-        <div>
-            <a href="#facebook" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-facebook">LOGIN WITH FACEBOOK</a>
-
-            <a href="#twitter" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-twitter">LOGIN WITH TWITTER</a>
-
-            <a href="#google" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-google">LOGIN WITH GOOGLE</a>
-
-
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Start page login with facebook -->
-    <div data-role="page" id="facebook">
-
-        <div data-role="header">
-            <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <h1>
-                <center>Login with Facebook</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <!-- miejsce na kod do logowania przez facebook -->
-
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Start page login with twitter -->
-    <div data-role="page" id="twitter">
-
-        <div data-role="header">
-            <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <h1>
-                <center>Login with Twitter</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <!-- miejsce na kod do logowania przez Twitter -->
-
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Start page login with Google -->
-    <div data-role="page" id="google">
-
-        <div data-role="header">
-            <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <h1>
-                <center>Login with Google</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <!-- miejsce na kod do logowania przez Google -->
-
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Page Regulamin -->
-    <div data-role="page" id="Regulamin">
-
-        <div data-role="header">
-            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Regulamin</center>
-            </h1>
-        </div>
-        <div role="main " class="ui-content ">
-            Regulamin serwisu
+            <div data-role="footer" class="ui-footer-fixed">
+                <p>
+                    <a href="#sign"><input type="button" value="Sign up" id="sign"></a>
+                    <a href="#login"><input type="button" value="Log in" /></a>
+                </p>
+            </div>
+            <!-- /footer -->
         </div>
         <!-- /page -->
-    </div>
 
-    <!-- Page Polityka -->
-    <div data-role="page" id="Politic">
+        <!-- Start of second page -->
+        <div data-role="page" id="sign">
 
-        <div data-role="header">
-            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Polityka prywatności</center>
-            </h1>
+            <div data-role="header">
+                <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Create an account</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <form>
+                    <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
+                    <br>
+                    <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
+                    <br>
+                    <input data-clear-btn="true" name="password-2" placeholder="Confirm Password" id="password-2" value="" autocomplete="off" type="password">
+                    <br><br>
+
+                    <input name="checkbox-0 " type="checkbox" />
+                    <a href="#Regulamin">Akceptuje Regulamin</a>
+
+                    <input name="checkbox-0 " type="checkbox" />
+                    <a href="#Politic">Akceptuje Politykę Prywatności</a>
+
+                </form>
+                <h4>
+                    <center><a href="#user_account" class="ui-btn">Sign up</a></center>
+
+                </h4>
+            </div>
+            <!-- /content -->
+
         </div>
-        <div role="main " class="ui-content ">
-            Polityka prywatności
+        <!-- /page -->
+
+        <!-- Start page login -->
+        <div data-role="page" id="login">
+
+            <div data-role="header">
+                <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <h1>
+                    <center>Login to your app</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <form>
+                    <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
+                    <br>
+                    <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
+                    <br>
+                </form>
+                <h3>
+                    <center><a href="#user_account" class="ui-btn">Log in</a></center>
+                </h3>
+                <center>
+                    <h4>
+                        <hr width="48%" align="left" style="float:left" /> or
+                        <hr width="48%" align="right" style="float:right" />
+                    </h4>
+                </center>
+            </div>
+            <div>
+                <a href="#facebook" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-facebook">LOGIN WITH FACEBOOK</a>
+
+                <a href="#twitter" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-twitter">LOGIN WITH TWITTER</a>
+
+                <a href="#google" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-google">LOGIN WITH GOOGLE</a>
+
+
+            </div>
+            <!-- /content -->
+
         </div>
-    </div>
-    <!-- /page -->
+        <!-- /page -->
 
-    <!-- Page user account -->
-    <div data-role="page" id="user_account">
+        <!-- Start page login with facebook -->
+        <div data-role="page" id="facebook">
 
-        <div data-role="header">
-            <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <center>Wirtualna Apteczka</center>
+            <div data-role="header">
+                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <h1>
+                    <center>Login with Facebook</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <!-- miejsce na kod do logowania przez facebook -->
+
+            </div>
+            <!-- /content -->
+
+        </div>
+        <!-- /page -->
+
+        <!-- Start page login with twitter -->
+        <div data-role="page" id="twitter">
+
+            <div data-role="header">
+                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <h1>
+                    <center>Login with Twitter</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <!-- miejsce na kod do logowania przez Twitter -->
+
+            </div>
+            <!-- /content -->
+
+        </div>
+        <!-- /page -->
+
+        <!-- Start page login with Google -->
+        <div data-role="page" id="google">
+
+            <div data-role="header">
+                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <h1>
+                    <center>Login with Google</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <!-- miejsce na kod do logowania przez Google -->
+
+            </div>
+            <!-- /content -->
+
+        </div>
+        <!-- /page -->
+
+        <!-- Page Regulamin -->
+        <div data-role="page" id="Regulamin">
+
+            <div data-role="header">
+                <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Regulamin</center>
+                </h1>
+            </div>
+            <div role="main " class="ui-content ">
+                Regulamin serwisu
+            </div>
+            <!-- /page -->
         </div>
 
-        <!-- Miejsce na wstawienie avatara użytkownika-->
-        <div role="main" class="ui-content">
-            <center>
-                <img src="img/avatar.jpg">
-                <p>
+        <!-- Page Polityka -->
+        <div data-role="page" id="Politic">
+
+            <div data-role="header">
+                <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Polityka prywatności</center>
+                </h1>
+            </div>
+            <div role="main " class="ui-content ">
+                Polityka prywatności
+            </div>
+        </div>
+        <!-- /page -->
+
+        <!-- Page user account -->
+        <div data-role="page" id="user_account">
+
+            <div data-role="header">
+                <a href="#sign" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <center>Wirtualna Apteczka</center>
+            </div>
+
+            <!-- Miejsce na wstawienie avatara użytkownika-->
+            <div role="main" class="ui-content">
+                <center>
+                    <img src="img/avatar.jpg">
+                    <p>
                     <h1>Jan Kowalski</h1>
-                </p>
-            </center>
+                    </p>
+                </center>
+            </div>
+
+            <div>
+                <ul data-role="listview" data-insert="true">
+                    <li>
+                        <a href="#list_of_medicines">
+                            <img src="img/apteczka1.jpg">
+                            <h2>Twoja Apteczka</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings">
+                            <img src="img/setings.png">
+                            <h2>Ustawienia konta</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#start">
+                            <img src="img/logout.jpg">
+                            <h2>Wyloguj</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
+        <!-- /page-->
 
-        <div>
-            <ul data-role="listview" data-insert="true">
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/apteczka1.jpg">
-                        <h2>Twoja Apteczka</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#settings">
-                        <img src="img/setings.png">
-                        <h2>Ustawienia konta</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#start">
-                        <img src="img/logout.jpg">
-                        <h2>Wyloguj</h2>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <!-- Page user settings -->
+        <div data-role="page" id="settings">
 
-    </div>
-    <!-- /page-->
+            <div data-role="header">
+                <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <center>Twoje konto</center>
+            </div>
 
-    <!-- Page user settings -->
-    <div data-role="page" id="settings">
-
-        <div data-role="header">
-            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <center>Twoje konto</center>
-        </div>
-
-        <!-- Miejsce na wstawienie avatara użytkownika-->
-        <div role="main" class="ui-content">
-            <center>
-                <img src="img/avatar.jpg">
-                <p>
+            <!-- Miejsce na wstawienie avatara użytkownika-->
+            <div role="main" class="ui-content">
+                <center>
+                    <img src="img/avatar.jpg">
+                    <p>
                     <h1>Jan Kowalski</h1>
-                </p>
-            </center>
-        </div>
+                    </p>
+                </center>
+            </div>
 
-        <div>
-            <ul data-role="listview" data-insert="true">
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/apteczka1.jpg">
-                        <h2>Twoja Apteczka</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#change_login_haslo">
-                        <img src="img/setings.png">
-                        <h2>Zmien login oraz hasło</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#change_avatar">
-                        <img src="img/avatar2.jpg">
-                        <h2>Dodaj/usun avatar</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#user_account">
-                        <img src="img/save.jpg">
-                        <h2>Zapisz zmiany</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#start">
-                        <img src="img/logout.jpg">
-                        <h2>Wyloguj</h2>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-    <!-- /page-->
-
-    <!-- Start of change_login_haslo page -->
-    <div data-role="page" id="change_login_haslo">
-
-        <div data-role="header">
-            <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Data change</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <form>
-                <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
-                <br>
-                <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
-                <br>
-                <input data-clear-btn="true" name="password-2" placeholder="Confirm Password" id="password-2" value="" autocomplete="off" type="password">
-                <br><br>
-            </form>
-            <center><img src="img/apteczka2.jpg"></center>
-            <h4>
-                <center><a href="#settings" class="ui-btn">Zapisz</a></center>
-            </h4>
-        </div>
-        <!-- /content -->
-
-    </div>
-    <!-- /page -->
-
-    <!-- Start of change_avatar -->
-    <div data-role="page" id="change_avatar">
-
-        <div data-role="header">
-            <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Data change</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-            <center><img src="img/avatar1.jpg"></center>
-        </div>
-        <!-- /content -->
-
-        <div data-role="footer">
-            <h4>
-                <a href="#choose_foto"><input type="button" value="Wybierz zdjęcie"></a>
-                <a href="#take_foto"><input type="button" value="Zrób zdjęcie" /></a>
-            </h4>
-        </div>
-        <!-- /footer -->
-    </div>
-    <!-- /page -->
-
-    <!-- Start of choose foto -->
-    <div data-role="page" id="choose_foto">
-
-        <div data-role="header">
-            <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Wybierz zdjęcie</center>
-            </h1>
-        </div>
-        <!-- /header -->
-
-        <div role="main " class="ui-content ">
-
-            <!--miejsce na kod do wyboru zdjęcia-->
+            <div>
+                <ul data-role="listview" data-insert="true">
+                    <li>
+                        <a href="#list_of_medicines">
+                            <img src="img/apteczka1.jpg">
+                            <h2>Twoja Apteczka</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#change_login_haslo">
+                            <img src="img/setings.png">
+                            <h2>Zmien login oraz hasło</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#change_avatar">
+                            <img src="img/avatar2.jpg">
+                            <h2>Dodaj/usun avatar</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#user_account">
+                            <img src="img/save.jpg">
+                            <h2>Zapisz zmiany</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#start">
+                            <img src="img/logout.jpg">
+                            <h2>Wyloguj</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
-        <!-- /content -->
-    </div>
-    <!-- /page -->
+        <!-- /page-->
 
-    <!-- Start of take foto -->
-    <div data-role="page" id="take_foto">
+        <!-- Start of change_login_haslo page -->
+        <div data-role="page" id="change_login_haslo">
 
-        <div data-role="header">
-            <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Zrób zdjęcie</center>
-            </h1>
-        </div>
-        <!-- /header -->
+            <div data-role="header">
+                <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Data change</center>
+                </h1>
+            </div>
+            <!-- /header -->
 
-        <div role="main " class="ui-content ">
-
-            <!--miejsce na kod do wyboru zdjęcia-->
-
-        </div>
-        <!-- /content -->
-    </div>
-    <!-- /page -->
-    <!-- page list of medicines -->
-
-    <div data-role="page" id="list_of_medicines">
-        <div data-role="header">
-            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <center>Lista leków w Apteczce</center>
-            <a href="#user_account" class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext">no text</a>
-            <a href="#user_account" class="ui-btn ui-icon-search ui-btn-icon-right ui-btn-icon-notext">no text</a>
-        </div>
-
-        <div data-role="main" class="ui-content">
-
-            <ul data-role="listview" data-inset="true">
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/apap.jpg">
-                        <h2>Apap</h2>
-                        <button class="ui-btn ui-shadow ui-btn-icon-right ui-icon-myicon">Przeterminowany</button>
-                    </a>
-                </li>
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/ibuprom.png">
-                        <h2>Ibuprom MAX</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/lek 2.jpg">
-                        <h2>Na ból d..</h2>
-                    </a>
-                </li>
-            </ul>
+            <div role="main " class="ui-content ">
+                <form>
+                    <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
+                    <br>
+                    <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
+                    <br>
+                    <input data-clear-btn="true" name="password-2" placeholder="Confirm Password" id="password-2" value="" autocomplete="off" type="password">
+                    <br><br>
+                </form>
+                <center><img src="img/apteczka2.jpg"></center>
+                <h4>
+                    <center><a href="#settings" class="ui-btn">Zapisz</a></center>
+                </h4>
+            </div>
+            <!-- /content -->
 
         </div>
+        <!-- /page -->
+
+        <!-- Start of change_avatar -->
+        <div data-role="page" id="change_avatar">
+
+            <div data-role="header">
+                <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Data change</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+                <center><img src="img/avatar1.jpg"></center>
+            </div>
+            <!-- /content -->
+
+            <div data-role="footer">
+                <h4>
+                    <a href="#choose_foto"><input type="button" value="Wybierz zdjęcie"></a>
+                    <a href="#take_foto"><input type="button" value="Zrób zdjęcie" /></a>
+                </h4>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /page -->
+
+        <!-- Start of choose foto -->
+        <div data-role="page" id="choose_foto">
+
+            <div data-role="header">
+                <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Wybierz zdjęcie</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+
+                <!--miejsce na kod do wyboru zdjęcia-->
+
+            </div>
+            <!-- /content -->
+        </div>
+        <!-- /page -->
+
+        <!-- Start of take foto -->
+        <div data-role="page" id="take_foto">
+
+            <div data-role="header">
+                <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+                <h1>
+                    <center>Zrób zdjęcie</center>
+                </h1>
+            </div>
+            <!-- /header -->
+
+            <div role="main " class="ui-content ">
+
+                <!--miejsce na kod do wyboru zdjęcia-->
+
+            </div>
+            <!-- /content -->
+        </div>
+        <!-- /page -->
+        <!-- page list of medicines -->
+
+        <div data-role="page" id="list_of_medicines">
+            <div data-role="header">
+                <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+                <center>Lista leków w Apteczce</center>
+                <a href="#user_account" class="ui-btn ui-icon-plus ui-btn-icon-right ui-btn-icon-notext">no text</a>
+                <a href="#user_account" class="ui-btn ui-icon-search ui-btn-icon-right ui-btn-icon-notext">no text</a>
+            </div>
+
+            <div data-role="main" class="ui-content">
+
+                <ul data-role="listview" data-inset="true">
+                    <li>
+                        <a href="#list_of_medicines">
+                            <img src="img/apap.jpg">
+                            <h2>Apap</h2>
+                            <button class="ui-btn ui-shadow ui-btn-icon-right ui-icon-myicon">Przeterminowany</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#list_of_medicines">
+                            <img src="img/ibuprom.png">
+                            <h2>Ibuprom MAX</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#list_of_medicines">
+                            <img src="img/lek 2.jpg">
+                            <h2>Na ból d..</h2>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
 
 
-    </div>
-
-</body>
-
+        </div>
+        <script>
+            var screen = $.mobile.getScreenHeight();
+            var header = $(".ui-page-active .ui-header").hasClass("ui-header-fixed") ? $(".ui-page-active .ui-header").outerHeight() - 1 : $(".ui-page-active .ui-header").outerHeight();
+            var footer = $(".ui-page-active .ui-footer").hasClass("ui-footer-fixed") ? $(".ui-page-active .ui-footer").outerHeight() - 1 : $(".ui-page-active .ui-footer").outerHeight();
+            /* content div has padding of 1em = 16px (32px top+bottom). This step
+             can be skipped by subtracting 32px from content var directly. */
+            var contentCurrent = $(".ui-page-active .ui-content").outerHeight() - $(".ui-page-active  .ui-content").height();
+            var content = screen - header - footer - contentCurrent;
+            $(".ui-page-active  .ui-content").height(content);
+        </script>
+    </body>
 </html>
