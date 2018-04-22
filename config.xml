@@ -29,6 +29,8 @@
     
     <universal-links>
         <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
+        <host name="com.wirtualnaapteczka.android" scheme="https" />
+
 <!--        <host name="AUTH_DOMAIN" scheme="https">
             <path url="/__/auth/callback"/>
         </host>-->
