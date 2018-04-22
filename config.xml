@@ -19,6 +19,7 @@
 	<plugin name="cordova-universal-links-plugin" />
 	<plugin name="cordova-plugin-browsertab"  />
 	<plugin name="cordova-plugin-inappbrowser" />
+    <preference name="AndroidLaunchMode" value="singleTask" />
     <!-- end -->
     
     <plugin name="cordova-plugin-whitelist" source="npm" />

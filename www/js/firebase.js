@@ -10,7 +10,8 @@ var app_fireBase = {};
     storageBucket: "wirtualnaapteczka.appspot.com",
     messagingSenderId: "292234828986"
   };
+  
   firebase.initializeApp(config);
     
-  app_fireBase = fireBase;
+  app_fireBase = firebase;
 })()
