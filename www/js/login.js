@@ -35,4 +35,4 @@ var uiConfig = {
 
   // The start method will wait until the DOM is loaded.
     ui.start('#firebaseui-auth-container', uiConfig);
-})()
+})();
