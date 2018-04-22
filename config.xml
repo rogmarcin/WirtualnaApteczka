@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-		id          = "wirtualnaApteczka"
+		id          = "com.wirtualnaapteczka.android"
         version     = "1.0.0" >
 
     <name>WirtualnaApteczka</name>
@@ -28,12 +28,9 @@
     <allow-intent href="*" />
     
     <universal-links>
-        <host name="com.wirtualnaapteczka.android" scheme="https" />
         <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
-        
-
-<!--        <host name="AUTH_DOMAIN" scheme="https">
-            <path url="/__/auth/callback"/>
+<!--    <host name="AUTH_DOMAIN" scheme="https">
+        <path url="/__/auth/callback"/>
         </host>-->
     </universal-links>
 </widget>
