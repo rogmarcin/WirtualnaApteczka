@@ -9,5 +9,26 @@
         <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	</head>
 	<body onload="init()">
+		<div class="mainDiv"> 
+			<h3 id="heading"></h3>
+			<textarea id="mainText" placeholder="Enter text here that you want to post in Firebase"></textarea>
+			<button type="button" id="postData" onclick="postData()">PostData</button>
+			<button type="button" id="getData" onclick="getData()">GetData</button>
+		</div>
+	
+		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+		<script>
+		// Initialize Firebase
+			var config = {
+			apiKey: "AIzaSyAvDbvPWEHrQmjh2iYZS-7EvRrtE8pTh7Q",
+			authDomain: "wirtualnaapteczka.firebaseapp.com",
+			databaseURL: "https://wirtualnaapteczka.firebaseio.com",
+			projectId: "wirtualnaapteczka",
+			storageBucket: "wirtualnaapteczka.appspot.com",
+			messagingSenderId: "292234828986"
+		};
+		firebase.initializeApp(config);
+		</script>
+		<script src="js/index.js"></script>	
 	</body>
 </html>
