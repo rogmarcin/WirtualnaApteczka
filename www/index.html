@@ -483,13 +483,58 @@
                         <!-- musi być odwołanie do treści zamieszczonych w formularzu, Zamiast lek nr 1 to co jest w nazwie leku itd -->
                         <h3 class="ui-title">Lek nr 1</h3>
                         <p>Opis leku</p>
-                        <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-btn-b" data-rel="back">OK</a>
+                        <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-btn-b">OK</a>
 
                     </div>
                 </div>
         </div>
         <!-- /footer -->
     </div>
+    <!-- search medicines page -->
+    <div data-role="page" id="search">
+        <div data-role="header" class="ui-header">
+        </div>
+        <!-- /header -->
+
+        <div role="main" class="ui-content text-center">
+            <div>
+                <p>
+                    <h1>Szukaj po:</h1>
+                </p>
+                <!-- Alternatywne wyszukiwanie z podpowiedziami 
+                    <form>
+                    <div class="ui-input-search ui-body-inherit ui-shadow-inset ui-input-has-clear">
+                        <input data-type="search" data-enhanced="true" data-inset="false" id="pre-rendered-example-input" placeholder="Nazwa leku" value="">
+                    </div>
+                    <div data-role="controlgroup" data-enhanced="true" data-filter="true" data-filter-reveal="true" data-input="#pre-rendered-example-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+                        <div class="ui-controlgroup-controls">
+                            <a href="#1" class="ui-btn ui-corner-all ui-shadow ui-shadow ui-screen-hidden">Ibuprom</a>
+                            <a href="#2" class="ui-btn ui-corner-all ui-shadow ui-first-child ui-shadow ui-last-child">Apap</a>
+                            <a href="#3" class="ui-btn ui-corner-all ui-shadow ui-shadow ui-screen-hidden">Na ból du...</a>
+                        </div>
+                    </div>
+                </form> -->
+                <label for="search"></label>
+                <input name="password" id="search" value="" placeholder="Nazwa leku" type="search">
+                <label for="search"></label>
+                <input name="password" id="search" value="" placeholder="Dolegliwość" type="search">
+            </div>
+        </div>
+        <!-- /content -->
+        <div data-role="footer" class="ui-footer-fixed">
+            <p>
+                <a href="#list_of_medicines"><input type="button" value="Anuluj"></a>
+                <a href="#search_list"><input type="button" value="Szukaj" /></a>
+            </p>
+        </div>
+        <!-- /footer -->
+
+    </div>
+    <!-- /page -->
+
+
+
+
     <script>
         var screen = $.mobile.getScreenHeight();
         var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
