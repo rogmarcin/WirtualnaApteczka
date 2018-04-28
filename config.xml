@@ -12,9 +12,7 @@
 	
 	<!-- icons & splashscreen for Android -->
 	<platform name="android">
-		<preference name="SplashMaintainAspectRatio" value="true"/>
-		<preference name="SplashShowOnlyFirstTime" value="true"/>
-		<preference name="SplashScreenDelay" value="3000" />
+		
 		<!-- Icons -->
 		<icon density="ldpi" src="res/icon/android/ldpi.png"/>
 		<icon density="mdpi" src="res/icon/android/mdpi.png"/>
@@ -22,6 +20,7 @@
 		<icon density="xhdpi" src="res/icon/android/xhdpi.png"/>
 		<icon density="xxhdpi" src="res/icon/android/xxhdpi.png"/>
 		<icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+		<icon src="icon.png"> <!-- default icon -->
 		<!-- Portrait -->
 		<splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png"/>
 		<splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png"/>
@@ -36,9 +35,14 @@
         <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png"/>
         <splash density="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png"/>
         <splash density="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png"/>
+		<splash src="splash.png" /> <!-- default splash -->
+		
+		<preference name="SplashShowOnlyFirstTime" value="true"/>
+		<preference name="SplashScreenDelay" value="3000" />
     </platform>
 	
-	<plugin name="cordova-plugin-splashscreen" />
+	<!-- plugins -->
+	<plugin name="cordova-plugin-splashscreen" source="npm" />
 	<plugin name="cordova-plugin-device" spec="2.0.1" />
 	<plugin name="cordova-plugin-dialogs" spec="2.0.1" />
 
