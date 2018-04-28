@@ -20,7 +20,7 @@
 		<icon density="xhdpi" src="res/icons/android/drawable-xhdpi-icon.png" />
 		<icon density="xxhdpi" src="res/icons/android/drawable-xxhdpi-icon.png" />
 		<icon density="xxxhdpi" src="res/icons/android/drawable-xxxhdpi-icon.png" />
-		<icon src="icon.png"> <!-- default icon -->
+		<icon src="icon.png" />> <!-- default icon -->
 		
 		<!-- Splashscreen -->
 		<splash density="land-ldpi" src="res/screens/android/drawable-land-ldpi-screen.png" />
