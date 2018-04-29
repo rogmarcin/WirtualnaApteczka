@@ -1,14 +1,16 @@
-> Aplikacja *Wirtualna Apteczka* zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczne i co ważniejsze jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza. 
+<div><img src="http://v-ie.uek.krakow.pl/~s190804/1.jpg" width="125" height="125" align="right" valign="middle"><p align="justify">Aplikacja Wirtualna Apteczka zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczne i co ważniejsze jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza.</p></div>
 
-![](http://v-ie.uek.krakow.pl/~s190804/3.jpg) ![](http://v-ie.uek.krakow.pl/~s190804/2.jpg)
-
-### Funkcjonalności
+### Funkcjonalności:
 
 - Uwierzytelnianie użytkownika w aplikacji (podejście tradycyjne - login i hasło oraz przy użyciu kont społecznościowych).
 - Tworzenie zawartości wirtualnej apteczki w procesie dodawania jej elementów.
 - Pobieranie bardziej szczegółowych informacji (ulotek) o posiadanych lekach poprzez zewnętrzne API (np w przypadku gdy zgubiliśmy ulotkę i nie wiemy jakie jest dawkowanie).
 - Przeszukiwanie składników apteczki pod kątem leków na konkretne schorzenie.
 - Informowanie użytkownika końcowego o lekach przeterminowanych.
+
+### Użyte technologie:
+<div align="center"><img src="http://v-ie.uek.krakow.pl/~s190804/4.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/5.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/6.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/7.jpg" width="250" height="100"></div>
+
 
 ### Skład zespołu projektowego:
 
