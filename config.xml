@@ -17,12 +17,12 @@
 		<preference name="SplashShowOnlyFirstTime" value="false" />
 		
 		<!-- Icons -->
-		<icon qualifier="ldpi" src="res/icon/android/ldpi.png"/>
-		<icon qualifier="mdpi" src="res/icon/android/mdpi.png"/>
-		<icon qualifier="hdpi" src="res/icon/android/hdpi.png"/>
-		<icon qualifier="xhdpi" src="res/icon/android/xhdpi.png"/>
-		<icon qualifier="xxhdpi" src="res/icon/android/xxhdpi.png"/>
-		<icon qualifier="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+		<icon density="ldpi" src="res/icon/android/ldpi.png"/>
+		<icon density="mdpi" src="res/icon/android/mdpi.png"/>
+		<icon density="hdpi" src="res/icon/android/hdpi.png"/>
+		<icon density="xhdpi" src="res/icon/android/xhdpi.png"/>
+		<icon density="xxhdpi" src="res/icon/android/xxhdpi.png"/>
+		<icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
 		<icon src="icon.png" /> <!-- default icon -->
 		
 		<!-- Splashscreen -->
