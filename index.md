@@ -1,4 +1,7 @@
-<div><img src="http://v-ie.uek.krakow.pl/~s190804/1.jpg" width="125" height="125" align="right" valign="middle"><p align="justify">Aplikacja Wirtualna Apteczka zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczce i co ważniejsze czy jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza.</p></div>
+<div>
+    <img src="http://v-ie.uek.krakow.pl/~s190804/1.jpg" height="125" align="right" valign="middle">
+    <p align="justify">Aplikacja Wirtualna Apteczka zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje się w domowej apteczce i co ważniejsze czy jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę  pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza.</p>
+</div>
 
 ### Funkcjonalności:
 
@@ -9,8 +12,12 @@
 - Informowanie użytkownika końcowego o lekach przeterminowanych.
 
 ### Użyte technologie:
-<div align="center"><img src="http://v-ie.uek.krakow.pl/~s190804/4.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/5.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/6.jpg" width="100" height="100"><img src="http://v-ie.uek.krakow.pl/~s190804/7.jpg" width="250" height="100"></div>
-
+<div align="center">
+    <img src="http://v-ie.uek.krakow.pl/~s190804/4.jpg" height="80">
+    <img src="http://v-ie.uek.krakow.pl/~s190804/5.jpg" height="80">
+    <img src="http://v-ie.uek.krakow.pl/~s190804/6.jpg" height="80">
+    <img src="http://v-ie.uek.krakow.pl/~s190804/7.jpg" height="80">
+</div>
 
 ### Skład zespołu projektowego:
 
