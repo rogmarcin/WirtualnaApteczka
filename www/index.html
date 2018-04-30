@@ -5,16 +5,76 @@
     
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
     <script src="cordova.js"></script>
+    
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        (function() {
+            // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyAvDbvPWEHrQmjh2iYZS-7EvRrtE8pTh7Q",
+            authDomain: "wirtualnaapteczka.firebaseapp.com",
+            databaseURL: "https://wirtualnaapteczka.firebaseio.com",
+            projectId: "wirtualnaapteczka",
+            storageBucket: "wirtualnaapteczka.appspot.com",
+            messagingSenderId: "292234828986"
+          };
+
+          firebase.initializeApp(config);
+        })();
+    </script>
+    
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script>
+        var uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                  // User successfully signed in.
+                  // Return type determines whether we continue the redirect automatically
+                  // or whether we leave that to developer to handle.
+                  conosle.log(authResult, redirectUrl);
+                  return false;
+                },
+                signInSuccess: function(currentUser, credential, redirectUrl) {
+                    console.log(currentUser, credential, redirectUrl);
+                    return false;
+                },
+                uiShown: function() {
+                  // The widget is rendered.
+                  // Hide the loader.
+                  document.getElementById('loader').style.display = 'none';
+                },
+                signInFailure: function(error) {
+                    console.log(error);
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'redirect',
+    //        signInSuccessUrl: 'main.html',
+            signInOptions: [
+                //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                //firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        if (ui.isPendingRedirect()) {
+            console.log('');
+            ui.start('#firebaseui-auth-container', uiConfig);
+        }
+    </script>
 </head>
 <body>
     <h1>Welcome to My App</h1>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
-    <script src="js/firebase.js"></script>
-    <script src="js/login.js"></script>
 </body>
 </html>
