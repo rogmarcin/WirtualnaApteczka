@@ -23,9 +23,9 @@
     <preference name="AndroidLaunchMode" value="singleTask" />
     <universal-links>
         <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
-<!--    <host name="AUTH_DOMAIN" scheme="https">
-        <path url="/__/auth/callback"/>
-        </host>-->
+        <host name="wirtualnaapteczka.firebaseapp.com" scheme="https">
+            <path url="/__/auth/callback"/>
+        </host>
     </universal-links>
     <!-- end -->
     
@@ -33,5 +33,4 @@
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
-    
 </widget>
