@@ -19,7 +19,14 @@
 	<plugin name="cordova-universal-links-plugin" />
 	<plugin name="cordova-plugin-browsertab"  />
 	<plugin name="cordova-plugin-inappbrowser" />
+    
     <preference name="AndroidLaunchMode" value="singleTask" />
+    <universal-links>
+        <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
+<!--    <host name="AUTH_DOMAIN" scheme="https">
+        <path url="/__/auth/callback"/>
+        </host>-->
+    </universal-links>
     <!-- end -->
     
     <plugin name="cordova-plugin-whitelist" source="npm" />
@@ -27,10 +34,4 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />
     
-    <universal-links>
-        <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
-<!--    <host name="AUTH_DOMAIN" scheme="https">
-        <path url="/__/auth/callback"/>
-        </host>-->
-    </universal-links>
 </widget>
