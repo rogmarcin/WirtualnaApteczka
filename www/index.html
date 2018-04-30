@@ -2,33 +2,24 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<script src="js/pgb.js"></script>
+		<link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="cordova.js"></script>
-        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	</head>
-	<body onload="init()">
-		<div class="mainDiv"> 
-			<h3 id="heading"></h3>
-			<textarea id="mainText" placeholder="Enter text here that you want to post in Firebase"></textarea>
-			<button type="button" id="postData" onclick="postData()">PostData</button>
-			<button type="button" id="getData" onclick="getData()">GetData</button>
-		</div>
-	
+		<script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 		<script>
-		// Initialize Firebase
-		var config = {
-			apiKey: "AIzaSyDEtu6qssQYFOlBTxh8r0Z_G8JhNqTVLsU",
-			authDomain: "test-f2016.firebaseapp.com",
-			databaseURL: "https://test-f2016.firebaseio.com",
-			projectId: "test-f2016",
-			storageBucket: "test-f2016.appspot.com",
-			messagingSenderId: "972751497096"
-		};
-		firebase.initializeApp(config);
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDEtu6qssQYFOlBTxh8r0Z_G8JhNqTVLsU",
+				authDomain: "test-f2016.firebaseapp.com",
+				databaseURL: "https://test-f2016.firebaseio.com",
+				projectId: "test-f2016",
+				storageBucket: "test-f2016.appspot.com",
+				messagingSenderId: "972751497096"
+			};
+			firebase.initializeApp(config);
 		</script>
-		<script src="js/index.js"></script>	
+	</head>
+	<body onload="init()">
 	</body>
 </html>

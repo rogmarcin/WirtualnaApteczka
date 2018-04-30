@@ -9,8 +9,41 @@
     <author>
 		Marcin Róg, Mateusz Lis, Dariusz Śpicha, Piotr Wójcikiewicz
 	</author>
-	<platform name="android" />
-	<icon src="www/img/logo.jpg" />
+	
+	<!-- icons & splashscreen for Android -->
+	<platform name="android">
+		<preference name="SplashScreen" value="screen"/>
+		<preference name="SplashScreenDelay" value="4000" />
+		<preference name="SplashShowOnlyFirstTime" value="false" />
+		
+		<!-- Icons -->
+		<icon density="ldpi" src="res/icon/android/ldpi.png"/>
+		<icon density="mdpi" src="res/icon/android/mdpi.png"/>
+		<icon density="hdpi" src="res/icon/android/hdpi.png"/>
+		<icon density="xhdpi" src="res/icon/android/xhdpi.png"/>
+		<icon density="xxhdpi" src="res/icon/android/xxhdpi.png"/>
+		<icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+		<icon src="icon.png" /> <!-- default icon -->
+		
+		<!-- Splashscreen -->
+		<splash qualifier="port-ldpi" src="res/screen/android/splash-port-ldpi.png"/>
+		<splash qualifier="port-mdpi" src="res/screen/android/splash-port-mdpi.png"/>
+		<splash qualifier="port-hdpi" src="res/screen/android/splash-port-hdpi.png"/>
+		<splash qualifier="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png"/>
+		<splash qualifier="port-xxhdpi" src="res/screen/android/splash-port-xxhdpi.png"/>
+		<splash qualifier="port-xxxhdpi" src="res/screen/android/splash-port-xxxhdpi.png"/>
+		<splash qualifier="land-ldpi" src="res/screen/android/splash-land-ldpi.png"/>
+        <splash qualifier="land-mdpi" src="res/screen/android/splash-land-mdpi.png"/>
+        <splash qualifier="land-hdpi" src="res/screen/android/splash-land-hdpi.png"/>
+        <splash qualifier="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png"/>
+        <splash qualifier="land-xxhdpi" src="res/screen/android/splash-land-xxhdpi.png"/>
+        <splash qualifier="land-xxxhdpi" src="res/screen/android/splash-land-xxxhdpi.png"/>
+		<splash src="splash.png" /> <!-- default splash -->
+    </platform>
+	
+	<!-- plugins -->
+	<plugin name="cordova-plugin-splashscreen" source="npm" />
+
 	<plugin name="cordova-plugin-device" spec="2.0.1" />
 	<plugin name="cordova-plugin-dialogs" spec="2.0.1" />
     
