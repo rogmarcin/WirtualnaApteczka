@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-		id          = "com.wirtualnaapteczka.android"
+		<!-- id          = "com.wirtualnaapteczka.android" -->
         version     = "1.0.0" >
 
     <name>WirtualnaApteczka</name>
@@ -70,7 +70,7 @@
 	</universal-links>
 
 	<plugin name="cordova-plugin-googleplus" source="npm" spec="5.2.1">
- 		<variable name="WEB_APPLICATION_CLIENT_ID" value="718919480897-j1v726hkc93ajnjei3aajg0k8dd731em.apps.googleusercontent.com" />
+ 		<variable name="WEB_APPLICATION_CLIENT_ID" value="718919480897-g2aj11nq5bm8t3qm1nr4dora8pqhlnqc.apps.googleusercontent.com" />
  	</plugin>
 		
 	<plugin name="cordova-plugin-facebook4" source="npm" spec="1.7.4">
