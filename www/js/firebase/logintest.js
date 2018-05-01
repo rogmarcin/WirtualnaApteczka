@@ -1,3 +1,4 @@
+// "duża" funkcja w której używamy poszczególnych id przypisanych do przycisków do wywołania danej funkcji..
 function loginFirebase() {
     $('#register').click(function() {  
            
