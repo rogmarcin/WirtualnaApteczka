@@ -63,8 +63,8 @@
     
 	<!--fb and google login -->
     <universal-links>
-    	<host name="h6x6m.app.goo.gl" scheme="https" />
-    	<host name="englishwords-10e45.firebaseapp.com" scheme="https">
+    	<host name="ux743.app.goo.gl" scheme="https" />
+    	<host name="wirtualnaapteczka.firebaseapp.com" scheme="https">
         	<path url="/__/auth/callback"/>
     	</host>
 	</universal-links>
