@@ -53,6 +53,7 @@
 	<plugin name="cordova-plugin-browsertab"  />
 	<plugin name="cordova-plugin-inappbrowser" />
     <preference name="AndroidLaunchMode" value="singleTask" />
+	<preference name="DisallowOverscroll" value="true" />
     <!-- end -->
     
     <plugin name="cordova-plugin-whitelist" source="npm" />
@@ -60,10 +61,23 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />
     
+	<!--fb and google login -->
     <universal-links>
-        <host name="wirtualnaapteczka.firebaseapp.com" scheme="https" />
-<!--    <host name="AUTH_DOMAIN" scheme="https">
-        <path url="/__/auth/callback"/>
-        </host>-->
-    </universal-links>
+    	<host name="h6x6m.app.goo.gl" scheme="https" />
+    	<host name="englishwords-10e45.firebaseapp.com" scheme="https">
+        	<path url="/__/auth/callback"/>
+    	</host>
+	</universal-links>
+
+	<plugin name="cordova-plugin-googleplus" source="npm" spec="5.2.1">
+ 		<variable name="WEB_APPLICATION_CLIENT_ID" value="292234828986-rfmfeum1humdc1r7cjl80gmv1rj7n8fh.apps.googleusercontent.com" />
+ 	</plugin>
+		
+	<plugin name="cordova-plugin-facebook4" source="npm" spec="1.7.4">
+ 		<variable name="APP_ID" value="2067686196811637" />
+		<variable name="APP_NAME" value="WirtualnaApteczka" />
+	</plugin>
+
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline'; media-src *; img-src * data:;"/>
+
 </widget>

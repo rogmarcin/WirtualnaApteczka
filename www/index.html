@@ -12,6 +12,7 @@
         
         <script src="js/firebase/config.js"></script>
         <script src="js/firebase/login.js"></script>
+        <script src="js/firebase/logintest.js"></script>
         
         <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
@@ -36,6 +37,30 @@
                     <a href="#login"><input type="button" value="Log in" /></a>
                 </p>
             </div>
+            <div data-role="page" id="logowanie" >
+                <div data-role="header" id="header">
+                    <b> Zaloguj się </b> <br> <br>
+                        <div id="robotofont">
+                            Możesz również założyć konto używając FB, lub GOOGLE
+                        </div>	
+                        <div id="robotofont">
+                            Zalogowany jako <p id="loggedas"> </p> <br>
+                             <p id="feedback">
+                        </div>	
+                </div>
+                <div data-role="main" class="ui-content" >		
+                    <div id="registerForm">
+                        <input type="text" id="userEmail" placeholder="Email"> 
+                        <input type="password" id="userPass" placeholder="Password"> 
+                        <button type="button" id="register">Register</button> 
+                        <button type="button" id="login">login</button>
+                        <button type="button" id="logingoogle">logingoogle</button>
+                        <button type="button" id="loginfacebook" >loginfacebook</button>
+                        <button type="button" id="logout" >logout</button> 
+        
+                    </div>
+                </div>
+        </div>
             <!-- /footer -->
         </div>
         <div data-role="page" id="login">
