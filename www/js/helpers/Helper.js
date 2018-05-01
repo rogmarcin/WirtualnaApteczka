@@ -20,6 +20,27 @@ var Helper = {
 `;
         var dialog = html.replace('{content}', textContent);
         $(dialog).popup().popup("open");
+    },
+    userEmail: function() {
+        var user = firebase.auth().currentUser;
+        return user ? user.email : null;
+    },
+    userDisplayName: function() {
+        var user = firebase.auth().currentUser;
+        return user ? user.displayName : null;
+    },
+    userId: function() {
+        var user = firebase.auth().currentUser;
+        return user ? user.uid : null;
+    },
+    uuid: function() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (d + Math.random()*16)%16 | 0;
+            d = Math.floor(d/16);
+            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+        });
+        
+        return uuid;
     }
-    
 };

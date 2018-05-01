@@ -1,6 +1,6 @@
 /* global ApiClient */
 
-DemoView = {
+MedicamentView = {
     renderSearch: function(medicaments) {
         var list = $('<ul>', {
             "data-role": "listview",
@@ -15,20 +15,20 @@ DemoView = {
                 text: element.label,
                 "data-id": element.id,
                 href: "#",
-                onclick: `(new MedicamentController('DemoView')).leaflet($(this).data('id'))`
+                onclick: `MedicamentController.leaflet($(this).data('id'))`
             });
 
             var listElem = $('<li>').append(link);
             list.append(listElem);
         });
         
-        var panelId = "#link-results";
+        var panelId = "#add_medicines .link-results";
         $(panelId).html(list);
         $(panelId + " ul").listview();
     },
     
     renderLeaflet(result) {
-        var panelId = "#searchResults";
+        var panelId = "#add_medicines .search-results";
         var leaflet = $('<div>', {
             style: "overflow-y: auto"
         });
@@ -50,4 +50,6 @@ DemoView = {
         $(panelId).trigger( "create" );
         $(panelId).panel( "open" );
     }
+    
+    
 };

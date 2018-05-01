@@ -93,7 +93,7 @@ var ApiClient = (function () {
             };
             
             /**
-             * Count number of founded medicament
+             * Get leaflet of founded medicament
              * 
              * @param {integer} id Identifier od medicament
              * @param {function} callback Callback function calls on success.

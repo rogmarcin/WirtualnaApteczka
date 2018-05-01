@@ -18,7 +18,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'redirect',
-        signInSuccessUrl: 'main.html',
+        signInSuccessUrl: 'main.html#user_account',
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
 
@@ -30,7 +30,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         // Terms of service url.
-        tosUrl: 'main.html'
+        tosUrl: 'index.html#Regulamin'
     };
 
     // The start method will wait until the DOM is loaded.
