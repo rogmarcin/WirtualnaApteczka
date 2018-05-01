@@ -65,13 +65,14 @@
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-        if (!ui.isPendingRedirect()) {
+        if (ui.isPendingRedirect()) {
             ui.start('#firebaseui-auth-container', uiConfig);
         }
         
         if (window.cordova) {
+          AddDebug('universalLinks.subscribe()'); // CALLED OK.
           universalLinks.subscribe(null, function(eventData) {
-            console.log('Did launch application from the link: ' + eventData.url); // NEVER CALLED.
+            AddDebug('Did launch application from the link: ' + eventData.url); // NEVER CALLED.
           });
         }
     </script>
