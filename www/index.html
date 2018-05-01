@@ -33,7 +33,7 @@
                   // User successfully signed in.
                   // Return type determines whether we continue the redirect automatically
                   // or whether we leave that to developer to handle.
-                  console.log(authResult, redirectUrl);
+                  conosle.log(authResult, redirectUrl);
                   return false;
                 },
                 signInSuccess: function(currentUser, credential, redirectUrl) {
@@ -66,14 +66,8 @@
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
         if (ui.isPendingRedirect()) {
+            console.log('');
             ui.start('#firebaseui-auth-container', uiConfig);
-        }
-        
-        if (window.cordova) {
-          AddDebug('universalLinks.subscribe()'); // CALLED OK.
-          universalLinks.subscribe(null, function(eventData) {
-            AddDebug('Did launch application from the link: ' + eventData.url); // NEVER CALLED.
-          });
         }
     </script>
 </head>
