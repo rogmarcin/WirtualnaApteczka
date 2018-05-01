@@ -344,14 +344,9 @@
                 <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b">Anuluj</a>
                 <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
                 
-                <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-                    <div data-role="header" data-theme="a">
-                        <h1>Dodano lek </h1>
-                    </div>
-                    <div role="main" class="ui-content">
-                        <!-- musi być odwołanie do treści zamieszczonych w formularzu, Zamiast lek nr 1 to co jest w nazwie leku itd -->
-                        <h3 class="ui-title">Lek nr 1</h3>
-                        <p>Opis leku</p>
+                <div data-role="popup" class="success-dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+                    <div role="main" class="ui-content text-center">
+                        <p>Lek został dodany poprawnie</p>
                         <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-btn-b">OK</a>
                     </div>
                 </div>

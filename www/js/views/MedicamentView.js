@@ -49,7 +49,10 @@ MedicamentView = {
         $(panelId).trigger( "updatelayout" );
         $(panelId).trigger( "create" );
         $(panelId).panel( "open" );
-    }
+    },
     
+    renderAddSuccessDialog() {
+        $("#add_medicines .success-dialog").popup().popup("open");
+    }
     
 };

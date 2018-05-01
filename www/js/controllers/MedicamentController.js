@@ -86,6 +86,8 @@ var MedicamentController = (function() {
             var userId = Helper.userId();
             firebase.database().ref('medicaments/' + userId +'/' + id).set(data);
         }
+        
+        this.view.renderAddSuccessDialog();
     };
     
     return this;
