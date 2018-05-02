@@ -37,7 +37,6 @@ var MedicamentController = (function() {
     };
     
     this.populateMedicamentNameForm = function(name) {
-        console.log(name);
         $(this.pageId + ' input[name="medicament-name"]').val(name);
     };
     
@@ -74,6 +73,8 @@ var MedicamentController = (function() {
     };
     
     this.save = function(id, data) {
+        data['medicament-name'] = Helper.capitalize(data['medicament-name']);
+        
         if(id) {
             this.api.get(id, function(leflet) {
                 data['leaflet'] = leflet;
@@ -89,6 +90,29 @@ var MedicamentController = (function() {
         
         this.view.renderAddSuccessDialog();
     };
+    
+    this.list = function() {
+        var parent = this;
+        var userId = Helper.userId();
+        
+        firebase.database()
+            .ref('/medicaments/' + userId)
+            .orderByChild("/medicament-name")
+            .on('value', function(snapshot) {
+                parent.view.renderList(snapshot);
+        });
+    };
+    
+    this.get = function(id) {
+        var parent = this;
+        var userId = Helper.userId();
+        
+        firebase.database()
+            .ref('/medicaments/' + userId + '/' + id)
+            .on('value', function(snapshot) {
+                parent.view.renderSingle(snapshot.val());
+        });
+    }
     
     return this;
 })();

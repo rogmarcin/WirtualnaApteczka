@@ -42,5 +42,25 @@ var Helper = {
         });
         
         return uuid;
+    },
+    isExpired: function(dateString) {
+        var date = new Date(dateString);
+        
+        if(date === 'Invalid Date') {
+            return false;
+        } else {
+            var now = new Date();
+            now.setHours(0,0,0,0);
+            
+            return now > date;
+        }
+    },
+    capitalize: function(s) {
+        var sType = typeof s;
+        if(sType === 'undefined' || sType === null) {
+            return '';
+        } else {
+            return s[0].toUpperCase() + s.slice(1);
+        }
     }
 };

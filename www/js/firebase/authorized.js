@@ -9,7 +9,7 @@ function isGuest() {
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        console.log('user is logged in');
+        Application.initialize();
     } else {
         console.log('user is logged out');
         redirectToLogin();
