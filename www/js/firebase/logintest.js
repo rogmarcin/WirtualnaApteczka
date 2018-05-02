@@ -58,7 +58,7 @@ function loginFirebase() {
        $('#logingoogle').click(function() {
             window.plugins.googleplus.login(
        {
-                'webClientId' : '244487661018-8rn0cmocvl4p549fsfm3ag6umrgfrfd8.apps.googleusercontent.com',
+                'webClientId' : '292234828986-2jil32amnder6s5346gere18i7ub5knq.apps.googleusercontent.com',
                 'offline': true
        },
        function (obj) {
