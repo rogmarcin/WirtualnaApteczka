@@ -15,6 +15,13 @@
 
     <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                window.location.href = "main.html#user_account";
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -66,13 +73,13 @@
         </div>
         <script>
             // Register enabled if user accept checkbox
-$(document).on("change", "#checkbox-mini-0", function () {
-    if ($(this).prop("checked")) {
-        $("#register").button("enable");
-    } else {
-        $("#register").button("disable");
-    }
-});
+            $(document).on("change", "#checkbox-mini-0", function () {
+                if ($(this).prop("checked")) {
+                    $("#register").button("enable");
+                } else {
+                    $("#register").button("disable");
+                }
+            });
         </script>
     </div>
     <div data-role="page" id="loginpage">
@@ -103,7 +110,7 @@ $(document).on("change", "#checkbox-mini-0", function () {
                     <hr width="48%" align="right" style="float:right" />
                 </h4>
             </center>
-            
+
         </div>
         <div>
             <button type="button" id="logingoogle">LOGIN WITH GOOGLE</button>

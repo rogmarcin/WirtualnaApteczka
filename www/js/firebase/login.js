@@ -119,8 +119,3 @@ facebookConnectPlugin.getLoginStatus(function (status) {
     console.log("current status: " + JSON.stringify(status));
 });
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        window.location.href = "main.html#user_account";
-    }
-});
