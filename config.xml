@@ -43,9 +43,9 @@
 	
 	<!-- plugins -->
 	<plugin name="cordova-plugin-splashscreen" source="npm" />
-
 	<plugin name="cordova-plugin-device" spec="2.0.1" />
 	<plugin name="cordova-plugin-dialogs" spec="2.0.1" />
+	<plugin name="de.appplant.cordova.plugin.local-notification" spec="~0.8.5" />
     
     <!-- firebase login -->
     <plugin name="cordova-plugin-buildinfo"  />
