@@ -15,3 +15,18 @@ firebase.auth().onAuthStateChanged(function(user) {
         redirectToLogin();
     }
 });
+
+function logout() {
+    firebase.auth().signOut();
+
+    facebookConnectPlugin.logout(function () {
+        console.log("User sign out from Facebook");
+    }, function () {
+        console.log("User not sign out from Facebook");
+    });
+
+    var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+		console.log('User signed out from Google.');
+	});
+};

@@ -6,6 +6,7 @@ var Application = {
         this.bindEvents();
         
         MedicamentController.list();
+        $('.load-user-email').html(Helper.userEmail());
     },
     // Bind Event Listeners
     //

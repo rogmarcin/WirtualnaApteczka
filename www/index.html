@@ -1,163 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="cordova.js"></script>
-        <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-        
-        <script src="js/firebase/config.js"></script>
-        <script src="js/firebase/login.js"></script>
-        
-        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-    <body>
-        <!-- Start of first page -->
-        <div data-role="page" id="start">
-            <div data-role="header" class="ui-header">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="cordova.js"></script>
+    <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+    <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+
+    <script src="js/firebase/config.js"></script>
+    <script src="js/firebase/login.js"></script>
+
+    <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- Start of first page -->
+    <div data-role="page" id="start">
+        <div data-role="header" class="ui-header">
+        </div>
+        <!-- /header -->
+        <div role="main" class="ui-content text-center">
+            <div>
+                <h1>Wirtualna Apteczka</h1>
+                <img src="img/apteczka.jpg" style="max-width: 100%" />
             </div>
-            <!-- /header -->
-            <div role="main" class="ui-content text-center">
-                <div>
-                    <h1>Wirtualna Apteczka</h1>
-                    <img src="img/apteczka.jpg" style="max-width: 100%" />
+        </div>
+        <!-- /content -->
+        <div data-role="footer" class="ui-footer-fixed">
+            <p>
+                <a href="#sign">
+                    <input type="button" value="Sign up" id="sign">
+                </a>
+                <a href="#loginpage">
+                    <input type="button" value="Log in" />
+                </a>
+            </p>
+        </div>
+
+    </div>
+    <div data-role="page" id="sign">
+        <div data-role="header">
+            <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
+            <h1>
+                <center>Create an account</center>
+            </h1>
+        </div>
+        <div role="main" class="ui-content">
+            <form>
+                <input placeholder="Email" id="userEmail" type="text">
+                <input data-clear-btn="true" placeholder="Password" id="userPass" autocomplete="off" type="password">
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <input type="checkbox" name="checkbox-mini-0" id="checkbox-mini-0" class="chk" />
+                        <label for="checkbox-mini-0">Akceptuję regulamin i politykę prywatności</label>
+                    </fieldset>
                 </div>
-            </div>
-            <!-- /content -->
-            <div data-role="footer" class="ui-footer-fixed">
-                <p>
-                    <a href="#sign"><input type="button" value="Sign up" id="sign"></a>
-                    <a href="#login"><input type="button" value="Log in" /></a>
-                </p>
-            </div>
-            <!-- /footer -->
-        </div>
-        <div data-role="page" id="login">
-            <div data-role="header">
-                <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-                <h1>
-                    <center>Login to your app</center>
-                </h1>
-            </div>
-            <!-- /header -->
-            <div role="main " class="ui-content ">
-                <div id="firebaseui-auth-container"></div>
-                <div id="loader">Loading...</div>
-                <!--                <form>
-                                    <input name="textinput-1" id="textinput-1" placeholder="Username or Email" value="" type="text">
-                                    <br>
-                                    <input data-clear-btn="true" name="password-1" placeholder="Password" id="password-1" value="" autocomplete="off" type="password">
-                                    <br>
-                                </form>
-                                <h3>
-                                    <center><a href="#user_account" class="ui-btn">Log in</a></center>
-                                </h3>
-                                <center>
-                                    <h4>
-                                        <hr width="48%" align="left" style="float:left" /> or
-                                        <hr width="48%" align="right" style="float:right" />
-                                    </h4>
-                                </center>-->
-            </div>
-            <!--            <div>
-                            <a href="#facebook" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-facebook">LOGIN WITH FACEBOOK</a>
-                            <a href="#twitter" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-twitter">LOGIN WITH TWITTER</a>
-                            <a href="#google" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-google">LOGIN WITH GOOGLE</a>
-                        </div>-->
-            <!-- /content -->
-        </div>
-        <!-- /page -->
-        <!-- Start page login with facebook -->
-        <div data-role="page" id="facebook">
-            <div data-role="header">
-                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-                <h1>
-                    <center>Login with Facebook</center>
-                </h1>
-            </div>
-            <!-- /header -->
-            <div role="main " class="ui-content ">
-
-                <!-- miejsce na kod do logowania przez facebook -->
-
-            </div>
-            <!-- /content -->
-        </div>
-        <!-- /page -->
-        <!-- Start page login with twitter -->
-        <div data-role="page" id="twitter">
-            <div data-role="header">
-                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-                <h1>
-                    <center>Login with Twitter</center>
-                </h1>
-            </div>
-            <!-- /header -->
-            <div role="main " class="ui-content ">
-
-                <!-- miejsce na kod do logowania przez Twitter -->
-
-            </div>
-            <!-- /content -->
-        </div>
-        <!-- /page -->
-        <!-- Start page login with Google -->
-        <div data-role="page" id="google">
-            <div data-role="header">
-                <a href="#login" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-                <h1>
-                    <center>Login with Google</center>
-                </h1>
-            </div>
-            <!-- /header -->
-            <div role="main " class="ui-content ">
-
-                <!-- miejsce na kod do logowania przez Google -->
-
-            </div>
-            <!-- /content -->
-        </div>
-        <!-- /page -->
-        <!-- Page Regulamin -->
-        <div data-role="page" id="Regulamin">
-            <div data-role="header">
-                <a href="http://v-ie.uek.krakow.pl/~s189957/wirtualna-apteczka-regulamin.pdf" target="_blank">Regulamin serwisu</a>
-                <h1>
-                    <center>Regulamin</center>
-                </h1>
-            </div>
-            <div role="main " class="ui-content ">
-               
-            </div>
-            <!-- /page -->
-        </div>
-        <!-- Page Polityka -->
-        <div data-role="page" id="Politic">
-            <div data-role="header">
-                <a href="http://v-ie.uek.krakow.pl/~s189957/wirtualna-apteczka-regulamin.pdf" target="_blank">Polityka prywatności</a>
-                <h1>
-                    <center>Polityka prywatności</center>
-                </h1>
-            </div>
-            <div role="main " class="ui-content ">
-              
-            </div>
+                <input type="submit" id="register" width="100%" value="&nbsp;Register&nbsp;" disabled/>
+            </form>
+            <a href="http://v-ie.uek.krakow.pl/~s189957/wirtualna-apteczka-regulamin.pdf" target="_self">regulamin i polityka prywatności</a>
         </div>
         <script>
-            var screen = $.mobile.getScreenHeight();
-            var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
-            var footer = $(".ui-page-active .ui-footer ").hasClass("ui-footer-fixed ") ? $(".ui-page-active .ui-footer ").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
-            /* content div has padding of 1em = 16px (32px top+bottom). This step
-             can be skipped by subtracting 32px from content var directly. */
-            var contentCurrent = $(".ui-page-active .ui-content ").outerHeight() - $(".ui-page-active .ui-content ").height();
-            var content = screen - header - footer - contentCurrent;
-            $(".ui-page-active .ui-content ").height(content);
+            // Register enabled if user accept checkbox
+$(document).on("change", "#checkbox-mini-0", function () {
+    if ($(this).prop("checked")) {
+        $("#register").button("enable");
+    } else {
+        $("#register").button("disable");
+    }
+});
         </script>
-    </body>
+    </div>
+    <div data-role="page" id="loginpage">
+        <div data-role="header">
+            <a href="#start" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+            <h1>
+                <center>Login to your app</center>
+            </h1>
+        </div>
+        <div role="main " class="ui-content ">
+            <div id="robotofont" style="display: none;">
+                Zalogowany jako:
+                <p id="loggedas"></p>
+                <p id="feedback"></p>
+            </div>
+            <form id="formularz" method="post" action="">
+                <input id="userEmail2" placeholder="Email" value="" type="text">
+                <input data-clear-btn="true" placeholder="Password" id="userPass2" value="" autocomplete="off" type="password">
+            </form>
+            <h3>
+                <center>
+                    <button type="button" id="login">Log in</button>
+                </center>
+            </h3>
+            <center>
+                <h4>
+                    <hr width="48%" align="left" style="float:left" /> or
+                    <hr width="48%" align="right" style="float:right" />
+                </h4>
+            </center>
+            
+        </div>
+        <div>
+            <button type="button" id="logingoogle">LOGIN WITH GOOGLE</button>
+            <button type="button" id="loginfacebook">LOGIN WITH FACEBOOK</button>
+        </div>
+    </div>
+    <script>
+        var screen = $.mobile.getScreenHeight();
+        var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
+        var footer = $(".ui-page-active .ui-footer ").hasClass("ui-footer-fixed ") ? $(".ui-page-active .ui-footer ").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
+        /* content div has padding of 1em = 16px (32px top+bottom). This step
+         can be skipped by subtracting 32px from content var directly. */
+        var contentCurrent = $(".ui-page-active .ui-content ").outerHeight() - $(".ui-page-active .ui-content ").height();
+        var content = screen - header - footer - contentCurrent;
+        $(".ui-page-active .ui-content ").height(content);
+    </script>
+</body>
+
 </html>
