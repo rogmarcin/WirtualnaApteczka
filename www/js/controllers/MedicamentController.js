@@ -176,7 +176,7 @@ var MedicamentController = (function() {
         firebase.database()
             .ref('/medicaments/' + userId)
             .orderByChild("/medicament-name")
-            .on('value', function(snapshot) {
+            .once('value', function(snapshot) {
                 parent.view.renderList(snapshot, filter.toLowerCase(), "#list_of_medicines_search");
                 location.hash = "#list_of_medicines_search";
         });

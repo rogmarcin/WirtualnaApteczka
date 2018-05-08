@@ -74,11 +74,20 @@ MedicamentView = {
                 ) {
                     return false;
                 } else {
-                    var searchResult = element.search.split(" ").find(function(elem) {
-                        return elem.search(filter) !== -1;
-                    });
                     
-                    if(typeof searchResult === "undefined") {
+                    var keywords = filter.split(" ");
+                    var success = false;
+                    
+                    $.each(keywords, function(idx, keyword) {
+                        console.log(keyword);
+                        if(element.search.search(keyword) !== -1) {
+                            success = true;
+                        }
+                    })
+                    
+                    console.log(success);
+                    
+                    if(success !== true) {
                         return false;
                     }
                 }
@@ -111,7 +120,7 @@ MedicamentView = {
             list.append(listElem);
         });
 
-        var panelId = (typeof panelId === "undefined" ? "#list_of_medicines" : panelId) + " .ui-content";
+        var panelId = ((typeof panelId === "undefined") ? "#list_of_medicines" : panelId) + " .ui-content";
         $(panelId).html(list);
         $(panelId + " ul").listview();
 
