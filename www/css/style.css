@@ -1,3 +1,15 @@
+.napis_logo {
+    margin-top: 18%;
+    font-size: 25pt;
+    font-family: Cambria;
+    max-width: 100%;
+    font-weight: bold;
+}
+
+.logo {
+    margin-block-start: 50pt;
+}
+
 #botton1 {
     float: left;
     width: 50%;
@@ -10,15 +22,10 @@
     background-color: lightgreen;
 }
 
-.ui-icon-myicon:after {
-    background-image: url("img/ikona_czaszka.png");
-    /* Make your icon fit */
-    background-size: 18px 18px;
-}
-
 [data-role="header"],
 [data-role="footer"] {
     text-align: center;
+    font-family: Cambria;
 }
 
 .text-center {
