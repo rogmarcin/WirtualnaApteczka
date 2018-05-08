@@ -21,11 +21,31 @@ var MedicamentController = (function() {
         return false;
     };
     
+    this.resetSaveForm = function() {
+        $.each($(this.pageId + ' form input'), function() {
+            $(this).val('');
+        });
+        
+        $(this.pageId + " .link-results").html('');
+    };
+    
     this.submitSave = function() {
         var result = {};
+        var success = true;
+        
         $.each($(this.pageId + ' form').serializeArray(), function() {
             result[this.name] = this.value;
+            
+            if(this.name !== 'medicament-id' && this.value === '') {
+                success = false;
+                return;
+            }
         });
+        
+        if(success === false) {
+            Helper.dialog('Wszystkie pola są wymagane');
+            return false;
+        }
         
         var id = result['medicament-id'];
         
@@ -77,13 +97,22 @@ var MedicamentController = (function() {
         
         if(id) {
             this.api.get(id, function(leflet) {
-                data['leaflet'] = leflet;
                 var userId = Helper.userId();
+                
+                var leafletString = "";
+                $.each(leflet, function() {
+                    leafletString += " " + this.header + " " + this.content;
+                });
+                
+                data['search'] = leafletString.toLowerCase();
+                data['leaflet'] = leflet;
+                
                 firebase.database().ref('medicaments/' + userId +'/' + id).set(data);
             });
         } else {
             id = Helper.uuid();
             data['leaflet'] = null;
+            data['medicament-id'] = id;
             var userId = Helper.userId();
             firebase.database().ref('medicaments/' + userId +'/' + id).set(data);
         }
@@ -113,6 +142,45 @@ var MedicamentController = (function() {
                 parent.view.renderSingle(snapshot.val());
         });
     }
+    
+    this.remove = function(event, caller) {
+        event.stopPropagation();
+        event.preventDefault();
+        
+        var userId = Helper.userId();
+        var id = $(caller).data('id');
+        
+        firebase.database()
+            .ref('/medicaments/' + userId + '/' + id)
+            .off('value');
+    
+        firebase.database()
+            .ref('/medicaments/' + userId + '/' + id)
+            .remove();
+    
+        firebase.database()
+            .ref('leaflets/' + userId +'/' + id)
+            .remove();
+    
+        Helper.dialog("Lek został usunięty", function() {
+            location.hash = $(caller).attr("href");
+        });
+    }
+    
+    this.searchByLeaflet = function(event, caller) {
+        var parent = this;
+        var userId = Helper.userId();
+        
+        var filter = $(caller).closest('.search-page-container').find('input').val();
+        
+        firebase.database()
+            .ref('/medicaments/' + userId)
+            .orderByChild("/medicament-name")
+            .on('value', function(snapshot) {
+                parent.view.renderList(snapshot, filter.toLowerCase(), "#list_of_medicines_search");
+                location.hash = "#list_of_medicines_search";
+        });
+    };
     
     return this;
 })();

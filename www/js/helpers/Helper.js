@@ -9,9 +9,10 @@ var Helper = {
     hideLoader: function() {
         $.mobile.loading("hide");
     },
-    dialog: function(textContent) {
+    dialog: function(textContent, callback) {
+        var id = 'helper-dialog';
         var html = `
-<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="a" data-dismissible="false" style="max-width:400px;">
+<div data-role="popup" id="${id}" data-overlay-theme="b" data-theme="a" data-dismissible="false" style="max-width:400px;">
     <div role="main" class="ui-content" style="text-align: center">
         <p>{content}</p>
         <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Ok</a>
@@ -19,7 +20,14 @@ var Helper = {
 </div>
 `;
         var dialog = html.replace('{content}', textContent);
-        $(dialog).popup().popup("open");
+        $(dialog).popup({
+            afterclose: function(event, ui) {
+                $(`#${id}`).popup('destroy');
+                if(typeof callback !== "undefined") {
+                    callback();
+                }
+            }
+        }).popup("open");
     },
     userEmail: function() {
         var user = firebase.auth().currentUser;
@@ -45,6 +53,7 @@ var Helper = {
     },
     isExpired: function(dateString) {
         var date = new Date(dateString);
+        
         
         if(date === 'Invalid Date') {
             return false;
