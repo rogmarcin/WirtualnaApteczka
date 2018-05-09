@@ -33,7 +33,7 @@
         <div data-role="header">
             Wirtualna Apteczka
         </div>
-        <!-- Miejsce na wstawienie avatara użytkownika-->
+
         <div role="main" class="ui-content text-center">
 
             <img src="img/avatar.jpg" style="max-width: 100%">
@@ -47,152 +47,7 @@
             <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-arrow-l" onclick="logout();">Wyloguj</a>
         </div>
     </div>
-    <!-- /page-->
-    <!-- Page user settings 
-        <div data-role="page" id="settings">
-            <div data-role="header">
-                <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <center>Twoje konto</center>
-        </div>
-        <div role="main" class="ui-content text-center">
-            <center>
-                <img src="img/avatar.jpg" style="max-width: 100%">
-                <p>
-                    <h1 class="user-email"></h1>
-                    <script>
-                        $('#settings .user-email').html(Helper.userEmail());
-                    </script>
-                </p>
-            </center>
-        </div>
-        <div>
-            <ul data-role="listview" data-insert="true">
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/apteczka1.jpg">
-                        <h2>Twoja Apteczka</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#change_login_haslo">
-                        <img src="img/setings.png">
-                        <h2>Zmien login oraz hasło</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#change_avatar">
-                        <img src="img/avatar2.jpg">
-                        <h2>Dodaj/usun avatar</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#user_account">
-                        <img src="img/save.jpg">
-                        <h2>Zapisz zmiany</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#start">
-                        <img src="img/logout.jpg">
-                        <h2>Wyloguj</h2>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    Start of change_login_haslo page
-    <div data-role="page" id="change_login_haslo">
-        <div data-role="header">
-            <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Data change</center>
-            </h1>
-        </div>
-        <!-- /header 
-        <div role="main " class="ui-content ">
-            <form>
-                <input name="textinput-11" id="textinput-11" placeholder="Username or Email" value="" type="text">
-                <br>
-                <input data-clear-btn="true" name="password-11" placeholder="Password" id="password-11" value="" autocomplete="off" type="password">
-                <br>
-                <input data-clear-btn="true" name="password-21" placeholder="Confirm Password" id="password-21" value="" autocomplete="off" type="password">
-                <br>
-                <br>
-            </form>
-            <center>
-                <img src="img/apteczka2.jpg">
-            </center>
-            <h4>
-                <center>
-                    <a href="#settings" class="ui-btn">Zapisz</a>
-                </center>
-            </h4>
-        </div>
-        <!-- /content 
-    </div>
-    <!-- /page
-    <!-- Start of change_avatar 
-    <div data-role="page" id="change_avatar">
-        <div data-role="header">
-            <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Data change</center>
-            </h1>
-        </div>
-        <!-- /header 
-        <div role="main " class="ui-content ">
-            <center>
-                <img src="img/avatar1.jpg">
-            </center>
-        </div>
-        <!-- /content 
-        <div data-role="footer">
-            <h4>
-                <a href="#choose_foto">
-                    <input type="button" value="Wybierz zdjęcie">
-                </a>
-                <a href="#take_foto">
-                    <input type="button" value="Zrób zdjęcie" />
-                </a>
-            </h4>
-        </div>
-        <!-- /footer 
-    </div>
-    <!-- /page -->
-    <!-- Start of choose foto 
-    <div data-role="page" id="choose_foto">
-        <div data-role="header">
-            <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
-            <h1>
-                <center>Wybierz zdjęcie</center>
-            </h1>
-        </div>
-        <!-- /header 
-        <div role="main " class="ui-content ">
 
-            <!--miejsce na kod do wyboru zdjęcia
-
-        </div>
-        <!-- /content 
-    </div>
-    <!-- /page -->
-    <!-- Start of take foto 
-    <div data-role="page" id="take_foto">
-        <div data-role="header">
-            <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
-            <h1>
-                <center>Zrób zdjęcie</center>
-            </h1>
-        </div>
-        <!-- /header 
-        <div role="main " class="ui-content ">
-
-            <!--miejsce na kod do wyboru zdjęcia
-
-        </div>
-        <!-- /content 
-    </div>
-    <!-- /page -->
     <!-- page list of medicines -->
     <div data-role="page" id="list_of_medicines">
         <div data-role="header">
@@ -233,7 +88,7 @@
             <a href="#" onclick="window.history.back()" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
         </div>
     </div>
-    <!-- /page -->
+
     <!-- page add medicines-->
     <div data-role="page" id="add_medicines">
         <div data-role="header" class="ui-header">
@@ -265,17 +120,13 @@
 
                     <input name="medicament-id" type="hidden" />
 
-                    <!--wstawić połączenie z aparatem telefonu i dodanie zdjęcia leku lub wywalamy tą funkcjonalność-->
-                    <!--<a href="#add_foto" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-plus">Dodaj zdjęcie</a>-->
-                    <!--miejsce na kod do dodania ulotki-->
                     <a href="#add_medicines" onclick="MedicamentController.submitSearch(event, this);" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus">Szukaj ulotki</a>
                 </form>
             </div>
             <div class="link-results"></div>
         </div>
-        <!--/content-->
+
         <div data-role="footer" class="ui-footer-fixed">
-            <!--miejsca na kod połączenia z bazą i dodanie leku-->
             <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-b">Anuluj</a>
             <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
 
@@ -286,7 +137,6 @@
                 </div>
             </div>
         </div>
-        <!-- /footer -->
     </div>
     <!-- search medicines page -->
     <div data-role="page" id="search" class="search-page-container">
@@ -304,7 +154,7 @@
             </p>
         </div>
     </div>
-    <!-- /page -->
+
     <script>
         var screen = $.mobile.getScreenHeight();
         var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();

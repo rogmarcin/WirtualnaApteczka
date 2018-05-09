@@ -1,216 +1,195 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="cordova.js"></script>
-        <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+    <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
-        <script src="js/firebase/config.js"></script>
-        <script src="js/firebase/login.js"></script>
+    <script src="js/firebase/config.js"></script>
+    <script src="js/firebase/login.js"></script>
 
-        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+        document.addEventListener("deviceready", function() {
+            plugin.notification.local.on("click", function(notification) {
+                console.log('stores medicament id on login: ' + notification.data);
+                window.sessionStorage.setItem("medicamentId", notification.data);
+            });
+        }, false);
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                window.location.href = "main.html#user_account";
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Start of first page -->
+    <div data-role="page" id="start">
+        <div data-role="header" class="ui-header text-center">
+        </div>
+
+        <div role="main" class="ui-content text-center">
+            <div>
+                <div class="napis_logo">Wirtualna Apteczka</div>
+                <div class="logo">
+                    <img src="img/apteczka.jpg" style="max-width: 100%" />
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" class="ui-footer-fixed">
+            <p>
+                <a href="#sign" data-role="button">Rejestracja</a>
+                <a href="#loginpage" data-role="button">Logowanie</a>
+            </p>
+        </div>
+    </div>
+    <div data-role="page" id="sign">
+        <div data-role="header">
+            <a href="#start" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
+            <p>
+                Wprowadź dane użytkownika
+            </p>
+        </div>
+        <div role="main" class="ui-content">
+            <form>
+                <input data-clear-btn="true" placeholder="e-mail" id="userEmail" type="text"><br>
+                <input data-clear-btn="true" placeholder="hasło" id="userPass" autocomplete="off" type="password"><br>
+
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <input type="checkbox" name="checkbox-mini-0" id="checkbox-mini-0" class="chk" />
+                        <label for="checkbox-mini-0" style="font-family: Cambria">Akceptuję regulamin i politykę prywatności*</label><br>
+                    </fieldset>
+                </div>
+                <input type="submit" id="register" value="&nbsp;Zarejestruj&nbsp;" disabled/>
+            </form>
+
+        </div>
+        <div data-role="footer" class="ui-footer-fixed">
+            <a href="#regulamin" target="_self">*Regulamin i polityka prywatności</a>
+        </div>
         <script>
-            document.addEventListener("deviceready", function() {
-                plugin.notification.local.on("click", function (notification) {
-                    console.log('stores medicament id on login: ' + notification.data);
-                    window.sessionStorage.setItem("medicamentId", notification.data);
-                });
-            }, false);
-            
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    window.location.href = "main.html#user_account";
+            // Register enabled if user accept checkbox
+            $(document).on("change", "#checkbox-mini-0", function() {
+                if ($(this).prop("checked")) {
+                    $("#register").button("enable");
+                } else {
+                    $("#register").button("disable");
                 }
             });
         </script>
-    </head>
-
-    <body>
-        <!-- Start of first page -->
-        <div data-role="page" id="start">
-            <div data-role="header" class="ui-header text-center">
-            </div>
-            <!-- /header -->
-            <div role="main" class="ui-content text-center">
-                <div>
-                    <div class="napis_logo">Wirtualna Apteczka</div>
-                    <div class="logo">
-                        <img src="img/apteczka.jpg" style="max-width: 100%" />
-                    </div>
-                </div>
-            </div>
-            <!-- /content -->
-            <div data-role="footer" class="ui-footer-fixed">
-                <p>
-                    <a href="#sign" data-role="button">Rejestracja</a>
-                    <a href="#loginpage" data-role="button">Logowanie</a>
-                </p>
-            </div>
+    </div>
+    <!-- Regulamin, polityka-->
+    <div data-role="page" id="regulamin">
+        <div data-role="header" class="ui-content text-center">
+            <a href="#sign" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a> Regulamin oraz Polityka Prywatności
         </div>
-        <div data-role="page" id="sign">
-            <div data-role="header">
-                <a href="#start" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
-                <p>
-                    Wprowadź dane użytkownika
-                </p>
-            </div>
-            <div role="main" class="ui-content">
-                <form>
-                    <input data-clear-btn="true" placeholder="e-mail" id="userEmail" type="text"><br>
-                    <input data-clear-btn="true" placeholder="hasło" id="userPass" autocomplete="off" type="password"><br>
 
-                    <div data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <input type="checkbox" name="checkbox-mini-0" id="checkbox-mini-0" class="chk" />
-                            <label for="checkbox-mini-0" style="font-family: Cambria">Akceptuję regulamin i politykę prywatności*</label><br>
-                        </fieldset>
-                    </div>
-                    <input type="submit" id="register" value="&nbsp;Zarejestruj&nbsp;" disabled/>
-                </form>
-
-            </div>
-            <div data-role="footer" class="ui-footer-fixed">
-                <a href="#regulamin" target="_self">*Regulamin i polityka prywatności</a>
-            </div>
-            <script>
-                // Register enabled if user accept checkbox
-                $(document).on("change", "#checkbox-mini-0", function () {
-                    if ($(this).prop("checked")) {
-                        $("#register").button("enable");
-                    } else {
-                        $("#register").button("disable");
-                    }
-                });
-            </script>
+        <div data-role="main" class="ui-content text-center">
+            <h3> Regulamin aplikacji mobilnej „Wirtualna apteczka”.</h3>
+            1. POSTANOWIENIA OGÓLNE <br>
+            <p class="regul">1.1. Niniejszy regulamin („Regulamin”) określa zasady korzystania z aplikacji mobilnej „Wirtualna Apteczka” uruchomionej na urządzeniach mobilnych z Androidem. Regulamin jest regulaminem, o którym mowa w art. 8 ustawy z dnia 18 lipca 2002
+                r. o świadczeniu usług drogą elektroniczną (Dz. U. 2002 r. nr 144 poz. 144 z późn. zm.). 1.2. Operatorem Aplikacji, usługodawcą świadczonych za jej pośrednictwem usług i administratorem danych osobowych jej użytkowników jest Zespół Projektowy,
+                który tworzą studenci kierunku Informatyka Stosowana na Uniwersytecie Ekonomicznym w Krakowie w składzie: Marcin Róg (kierownik projektu), Dariusz Śpicha, Mateusz Lis, Piotr Wójcikiewicz („Operator”). 1.3. Aplikacja Wirtualna Apteczka
+                zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki na urządzeniu mobilnym. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas lek lub suplement diety znajduje
+                się w domowej apteczce i co ważniejsze czy jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza. 1.4. W szczególności Aplikacja posiada następujące
+                funkcjonalności: 1.4.1. Uwierzytelnianie użytkownika w aplikacji (podejście tradycyjne - login i hasło oraz przy użyciu kont społecznościowych), 1.4.2. Tworzenie zawartości wirtualnej apteczki w procesie dodawania jej elementów, 1.4.3.
+                Pobieranie bardziej szczegółowych informacji (ulotek) o posiadanych lekach poprzez zewnętrzne API (np. w przypadku, gdy zgubiliśmy ulotkę i nie wiemy jakie jest dawkowanie) 1.4.4. Przeszukiwanie składników apteczki pod kątem leków na konkretne
+                schorzenie 1.4.5. Informowanie użytkownika końcowego o lekach przeterminowanych. 1.5. Do korzystania z Aplikacji niezbędne jest posiadanie urządzenia mobilnego, jak również połączenia urządzenia mobilnego z Internetem. Koszty połączenia
+                z Internetem obciążają użytkownika, stosownie do umów zawartych przez użytkownika z operatorem telekomunikacyjnym.</p><br> 2. ZASADY DOSTĘPU DO APLIKACJI ORAZ WYMAGANIA TECHNICZNE<br>
+            <p class="regul">2.1. Z Aplikacji mogą korzystać wszyscy użytkownicy urządzeń mobilnych z systemem Android (w wersji 5.0 lub nowszej) typu smartfon, którzy pobiorą ją z marketu aplikacji Sklep Google Play i prawidłowo uruchomią na urządzeniu mobilnym. 2.2.
+                Pobranie Aplikacji z Google Play, jak również korzystanie z oferowanych za jej pośrednictwem usług jest bezpłatne. 2.3. W celu uruchomienia i korzystania z Aplikacji urządzenie mobilne musi mieć zapewnione aktywne połączenie internetowe.
+                2.4. Aby korzystać z funkcjonalności Aplikacji Użytkownik powinien dokonać uprzedniej rejestracji za pośrednictwem Aplikacji.</p><br> 3. LOGOWANIE UŻYTKOWNIKA<br>
+            <p class="regul">3.1. W trakcie pierwszego uruchomienia Aplikacji Użytkownik zobowiązany jest przejść proces logowania, przez jeden z czterech sposobów: 3.1.1. Logowanie przez konto Google, 3.1.2. Logowanie przez konto Facebook`a, 3.1.3. Logowanie przez email
+                i uprzednią rejestrację, polegającą na założeniu indywidualnego konta Użytkownika w Aplikacji. Do dokonania Rejestracji wymagane jest podanie przez Użytkownika: imię, nazwisko, adres e-mail, hasło, powtórzone hasło. Użytkownik może zmienić
+                ustalone podczas Rejestracji hasło za pośrednictwem Aplikacji. 3.2. Użytkownik musi potwierdzić, że zapoznał się z Regulaminem i akceptuje jego treść. Uruchomienie i zalogowanie się do Aplikacji (lub posiadanie Aplikacji uruchomionej w
+                tle) jest konieczne dla korzystania z funkcjonalności Aplikacji. 3.3. Użytkownik ponosi wyłączną odpowiedzialność za niezgodność podanych przez siebie danych, jak również za ujawnienie przez niego osobom trzecim hasła do logowania w Aplikacji.
+                3.4. Operator informuje, że nie weryfikuje w żaden sposób tożsamości Użytkowników podczas ich Logowania/Rejestracji.</p><br> 4. ZASADY KORZYSTANIA Z APLIKACJI<br>
+            <p class="regul">4.1. Użytkownicy są zobowiązani do korzystania z Aplikacji w sposób zgodny z obowiązującym prawem, Regulaminem i regulaminem sklepu, z którego Aplikacja została pobrana, a także z zasadami współżycia społecznego, w tym ogólnymi zasadami korzystania
+                z sieci Internet i aplikacji mobilnych. 4.2. Użytkownicy są zobowiązani w szczególności do: 4.2.1. korzystania z Aplikacji w sposób nie zakłócający jej funkcjonowania, 4.2.2. korzystania z Aplikacji w sposób nieuciążliwy dla innych użytkowników
+                oraz Operatora, z poszanowaniem dóbr osobistych osób trzecich i wszelkich innych przysługującym im praw, 4.2.3. korzystania z wszelkich informacji i materiałów udostępnionych za pośrednictwem Aplikacji jedynie w zakresie dozwolonego użytku
+                i w granicach obowiązującego prawa. 4.3. Użytkownicy są zobowiązani niezwłocznie powiadomić Operatora o każdym przypadku naruszenia ich praw w związku z korzystaniem z Aplikacji.</p><br> 5. ODPOWIEDZIALNOŚĆ OPERATORA<br>
+            <p class="regul">5.1. Operator prowadzi bieżący nadzór nad technicznym funkcjonowaniem Aplikacji, zapewniając poprawność jej działania. 5.2. Użytkownik korzysta z Aplikacji dobrowolnie, na własną odpowiedzialność i powinien zapewnić możliwość poprawnego funkcjonowania
+                Aplikacji w zakresie, w jakim jest to zależne od Użytkownika (np. prawidłowe funkcjonowania urządzenia mobilnego, itp.). Za działania usług, aplikacji i serwisów internetowych innych niż Aplikacja odpowiedzialność ponoszą ich dostawcy
+                5.3. Operator nie ponosi odpowiedzialności za ograniczenia lub problemy techniczne w systemach teleinformatycznych, z których korzystają urządzenia mobilne Użytkowników, a które uniemożliwiają lub ograniczają użytkownikom korzystanie z
+                Aplikacji i oferowanych za jej pośrednictwem usług. 5.4. Operator nie ponosi odpowiedzialności za treści udostępniane przez Użytkowników, jak również nie ma na nie wpływu.</p><br> 6. ZAKOŃCZENIE KORZYSTANIA Z APLIKACJI<br>
+            <p class="regul">6.1. Użytkownicy mogą w dowolnym czasie zaprzestać korzystania z Aplikacji, w szczególności wówczas, gdy nie zaakceptują zmian wprowadzonych w niniejszym Regulaminie, Polityce Prywatności lub modyfikacji Aplikacji. Zaprzestanie korzystania
+                z Aplikacji wymaga jej usunięcia z urządzenia mobilnego. 6.2. W przypadku stwierdzenia, że użytkownik dopuszcza się działań zabronionych prawem lub Regulaminem, albo naruszających zasady współżycia społecznego lub godzących w usprawiedliwiony
+                interes Operatora, a w szczególności dobre imię, Operator może podjąć wszelkie prawem dozwolone działania, w tym ograniczyć możliwość korzystania przez użytkownika z Aplikacji. 6.3. Operator zastrzega sobie prawo zawieszenia, w dowolnym
+                czasie i z dowolnych przyczyn, działalności Aplikacji, a także prawo zmiany, wycofania lub dodania nowych usług świadczonych za jej pośrednictwem.</p><br> 7. POLITYKA PRYWATNOŚCI<br>
+            <p class="regul">7.1. Administratorem danych osobowych Użytkowników Aplikacji jest Operator. 7.2. Operator zapewnia wszystkim zarejestrowanym Użytkownikom realizację uprawnień wynikających z ustawy z dnia 29 sierpnia 1997 r. o ochronie danych osobowych (Dz.
+                U. 2016 r. poz. 922), w szczególności prawo wglądu do własnych danych osobowych, prawo żądania aktualizacji i usunięcia danych osobowych oraz prawo wniesienia sprzeciwu w przypadkach określonych w przepisach tej ustawy. 7.3. Dane osobowe
+                pozostawione w Aplikacji nie zostaną sprzedane ani udostępnione osobom trzecim. 7.4. Dane osobowe zbierane są w celu umożliwienia Użytkownikom korzystania z Aplikacji. Dane osobowe Użytkowników mogą ponadto służyć do weryfikacji, czy osoba
+                rejestrująca spełnia wymagane przez Regulamin i przepisy prawne warunki. 7.5. Podanie danych osobowych jest dobrowolne, jednak niezbędne do prawidłowego korzystania z Aplikacji. 7.6. W Aplikacji udostępniona jest możliwość rejestracji
+                przez Facebook, konto Google oraz konto na Twiterze - usługi te działają niezależnie od Operatora i posiadają własne polityki dotyczące prywatności oraz regulaminy.</p><br> 8. REKLAMACJA<br>
+            <p class="regul">8.1. Wszelkie reklamacje związane z korzystaniem z Aplikacji oraz ze świadczeniem za jej pośrednictwem usług, a także pytania dotyczące korzystania z Aplikacji należy kierować do Operatora na adres poczty elektronicznej pod adresem piotr.wojcikiewicz@op.pl.
+                8.2. Reklamacja powinna zawierać w swej treści: imię, nazwisko, adres e-mail Użytkownika (podane przy Rejestracji), jak również dokładny opis i wskazanie przyczyny reklamacji. 8.3. Operator odpowie na zgłoszenie w możliwie najkrótszym
+                czasie.</p><br> 9. PRAWA AUTORSKIE, LICENCJA<br>
+            <p class="regul">9.1. Prawa autorskie oraz prawa własności intelektualnej do Aplikacji jako całości należą do Operatora lub innych uprawnionych podmiotów trzecich i objęte są ochroną ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz.
+                U. 1994 r. nr 24 poz. 83 z późn. zm.) oraz innych przepisów powszechnie obowiązującego prawa. Ochrona przyznana Aplikacji obejmuje wszystkie formy jej wyrażenia. 9.2. Użytkownik korzystający z Aplikacji nie otrzymuje na własność żadnych
+                praw autorskich do Aplikacji. Użytkownikowi udzielana jest jedynie – na warunkach wskazanych w Regulaminie – niezbywalna, ważna na całym świecie i niewyłączna licencja uprawniająca go do korzystania z Aplikacji w sposób zgodny z jej przeznaczeniem,
+                z niniejszym Regulaminem. 9.3. W ramach udzielonej licencji Użytkownik jest uprawniony do korzystania z Aplikacji poprzez jej pobieranie, instalowanie, trwałe lub czasowe zwielokrotnianie w pamięci urządzenia mobilnego Użytkownika, jej
+                stosowanie i wyświetlanie w zakresie niezbędnym do korzystania z Aplikacji zgodnie z jej przeznaczeniem oraz wyłącznie na własny, niekomercyjny użytek. 9.4. Znaki handlowe Usługodawcy oraz podmiotów trzecich powinny być używane zgodnie
+                z obowiązującymi przepisami prawa.</p><br> 10. POSTANOWIENIA KOŃCOWE<br>
+            <p class="regul">10.1. W sprawach nieuregulowanych w Regulaminie zastosowanie mają odpowiednie przepisy powszechnie obowiązującego prawa. 10.2. Regulamin dostępny jest za pośrednictwem Aplikacji oraz na stronie internetowej: http://v-ie.uek.krakow.pl/~s189957/wirtualna-apteczka-regulamin.pdf.</p>
         </div>
-        <!-- Regulamin, polityka-->
-        <div data-role="page" id="regulamin">
-            <div data-role="header" class="ui-content text-center">
-                <a href="#sign" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a> Regulamin oraz Polityka Prywatności
-            </div>
-
-            <div data-role="main" class="ui-content text-center">
-                <h3> Regulamin aplikacji mobilnej „Wirtualna apteczka”.</h3> 
-                1. POSTANOWIENIA OGÓLNE <br>
-                <p class="regul">1.1. Niniejszy regulamin („Regulamin”) określa zasady korzystania z aplikacji mobilnej „Wirtualna Apteczka” uruchomionej na urządzeniach mobilnych z Androidem. Regulamin jest regulaminem,
-                    o którym mowa w art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (Dz. U. 2002 r. nr 144 poz. 144 z późn. zm.). 
-                    1.2. Operatorem Aplikacji, usługodawcą świadczonych za jej pośrednictwem usług i administratorem danych
-                    osobowych jej użytkowników jest Zespół Projektowy, który tworzą studenci kierunku Informatyka Stosowana na Uniwersytecie Ekonomicznym w Krakowie w składzie: Marcin Róg (kierownik projektu), Dariusz Śpicha, Mateusz Lis, Piotr Wójcikiewicz („Operator”).
-                    1.3. Aplikacja Wirtualna Apteczka zapewnia użytkownikowi możliwość monitorowania stanu oraz zasobów domowej apteczki na urządzeniu mobilnym. W przypadku choroby lub dolegliwości zdrowotnych pozwoli na zdalne sprawdzenie czy interesujący nas
-                    lek lub suplement diety znajduje się w domowej apteczce i co ważniejsze czy jest zdatny do użycia. Jeśli zgubimy oryginalne opakowanie lub ulotkę pozwoli na sprawdzenie zaleceń dotyczących dawkowania wydanych przez lekarza. 1.4. W szczególności
-                    Aplikacja posiada następujące funkcjonalności: 1.4.1. Uwierzytelnianie użytkownika w aplikacji (podejście tradycyjne - login i hasło oraz przy użyciu kont społecznościowych), 1.4.2. Tworzenie zawartości wirtualnej apteczki w procesie dodawania
-                    jej elementów, 1.4.3. Pobieranie bardziej szczegółowych informacji (ulotek) o posiadanych lekach poprzez zewnętrzne API (np. w przypadku, gdy zgubiliśmy ulotkę i nie wiemy jakie jest dawkowanie) 1.4.4. Przeszukiwanie składników apteczki pod
-                    kątem leków na konkretne schorzenie 1.4.5. Informowanie użytkownika końcowego o lekach przeterminowanych. 1.5. Do korzystania z Aplikacji niezbędne jest posiadanie urządzenia mobilnego, jak również połączenia urządzenia mobilnego z Internetem.
-                    Koszty połączenia z Internetem obciążają użytkownika, stosownie do umów zawartych przez użytkownika z operatorem telekomunikacyjnym.</p><br> 
-
-                2. ZASADY DOSTĘPU DO APLIKACJI ORAZ WYMAGANIA TECHNICZNE<br> 
-                <p class="regul">2.1. Z Aplikacji mogą korzystać wszyscy użytkownicy
-                    urządzeń mobilnych z systemem Android (w wersji 5.0 lub nowszej) typu smartfon, którzy pobiorą ją z marketu aplikacji Sklep Google Play i prawidłowo uruchomią na urządzeniu mobilnym. 2.2. Pobranie Aplikacji z Google Play, jak również korzystanie
-                    z oferowanych za jej pośrednictwem usług jest bezpłatne. 2.3. W celu uruchomienia i korzystania z Aplikacji urządzenie mobilne musi mieć zapewnione aktywne połączenie internetowe. 2.4. Aby korzystać z funkcjonalności Aplikacji Użytkownik powinien
-                    dokonać uprzedniej rejestracji za pośrednictwem Aplikacji.</p><br> 
-
-                3. LOGOWANIE UŻYTKOWNIKA<br> 
-                <p class="regul">3.1. W trakcie pierwszego uruchomienia Aplikacji Użytkownik zobowiązany jest przejść proces logowania, przez jeden z czterech sposobów: 3.1.1. Logowanie przez
-                    konto Google, 3.1.2. Logowanie przez konto Facebook`a, 3.1.3. Logowanie przez email i uprzednią rejestrację, polegającą na założeniu indywidualnego konta Użytkownika w Aplikacji. Do dokonania Rejestracji wymagane jest podanie przez Użytkownika:
-                    imię, nazwisko, adres e-mail, hasło, powtórzone hasło. Użytkownik może zmienić ustalone podczas Rejestracji hasło za pośrednictwem Aplikacji. 3.2. Użytkownik musi potwierdzić, że zapoznał się z Regulaminem i akceptuje jego treść. Uruchomienie
-                    i zalogowanie się do Aplikacji (lub posiadanie Aplikacji uruchomionej w tle) jest konieczne dla korzystania z funkcjonalności Aplikacji. 3.3. Użytkownik ponosi wyłączną odpowiedzialność za niezgodność podanych przez siebie danych, jak również
-                    za ujawnienie przez niego osobom trzecim hasła do logowania w Aplikacji. 3.4. Operator informuje, że nie weryfikuje w żaden sposób tożsamości Użytkowników podczas ich Logowania/Rejestracji.</p><br> 
-
-                4. ZASADY KORZYSTANIA Z APLIKACJI<br>
-                <p class="regul">4.1. Użytkownicy są zobowiązani do korzystania z Aplikacji w sposób zgodny z obowiązującym prawem, Regulaminem i regulaminem sklepu, z którego Aplikacja została pobrana, a także z zasadami współżycia społecznego, w tym ogólnymi zasadami korzystania z sieci
-                    Internet i aplikacji mobilnych. 4.2. Użytkownicy są zobowiązani w szczególności do: 4.2.1. korzystania z Aplikacji w sposób nie zakłócający jej funkcjonowania, 4.2.2. korzystania z Aplikacji w sposób nieuciążliwy dla innych użytkowników oraz
-                    Operatora, z poszanowaniem dóbr osobistych osób trzecich i wszelkich innych przysługującym im praw, 4.2.3. korzystania z wszelkich informacji i materiałów udostępnionych za pośrednictwem Aplikacji jedynie w zakresie dozwolonego użytku i w
-                    granicach obowiązującego prawa. 4.3. Użytkownicy są zobowiązani niezwłocznie powiadomić Operatora o każdym przypadku naruszenia ich praw w związku z korzystaniem z Aplikacji.</p><br> 
-
-                5. ODPOWIEDZIALNOŚĆ OPERATORA<br> 
-                <p class="regul">5.1. Operator prowadzi bieżący nadzór
-                    nad technicznym funkcjonowaniem Aplikacji, zapewniając poprawność jej działania. 5.2. Użytkownik korzysta z Aplikacji dobrowolnie, na własną odpowiedzialność i powinien zapewnić możliwość poprawnego funkcjonowania Aplikacji w zakresie, w jakim
-                    jest to zależne od Użytkownika (np. prawidłowe funkcjonowania urządzenia mobilnego, itp.). Za działania usług, aplikacji i serwisów internetowych innych niż Aplikacja odpowiedzialność ponoszą ich dostawcy 5.3. Operator nie ponosi odpowiedzialności
-                    za ograniczenia lub problemy techniczne w systemach teleinformatycznych, z których korzystają urządzenia mobilne Użytkowników, a które uniemożliwiają lub ograniczają użytkownikom korzystanie z Aplikacji i oferowanych za jej pośrednictwem usług.
-                    5.4. Operator nie ponosi odpowiedzialności za treści udostępniane przez Użytkowników, jak również nie ma na nie wpływu.</p><br> 
-
-                6. ZAKOŃCZENIE KORZYSTANIA Z APLIKACJI<br>
-                <p class="regul">6.1. Użytkownicy mogą w dowolnym czasie zaprzestać korzystania z Aplikacji, w szczególności
-                    wówczas, gdy nie zaakceptują zmian wprowadzonych w niniejszym Regulaminie, Polityce Prywatności lub modyfikacji Aplikacji. Zaprzestanie korzystania z Aplikacji wymaga jej usunięcia z urządzenia mobilnego. 6.2. W przypadku stwierdzenia, że
-                    użytkownik dopuszcza się działań zabronionych prawem lub Regulaminem, albo naruszających zasady współżycia społecznego lub godzących w usprawiedliwiony interes Operatora, a w szczególności dobre imię, Operator może podjąć wszelkie prawem dozwolone
-                    działania, w tym ograniczyć możliwość korzystania przez użytkownika z Aplikacji. 6.3. Operator zastrzega sobie prawo zawieszenia, w dowolnym czasie i z dowolnych przyczyn, działalności Aplikacji, a także prawo zmiany, wycofania lub dodania
-                    nowych usług świadczonych za jej pośrednictwem.</p><br> 
-
-                7. POLITYKA PRYWATNOŚCI<br> 
-                <p class="regul">7.1. Administratorem danych osobowych Użytkowników Aplikacji jest Operator. 7.2. Operator zapewnia wszystkim zarejestrowanym Użytkownikom realizację uprawnień wynikających
-                    z ustawy z dnia 29 sierpnia 1997 r. o ochronie danych osobowych (Dz. U. 2016 r. poz. 922), w szczególności prawo wglądu do własnych danych osobowych, prawo żądania aktualizacji i usunięcia danych osobowych oraz prawo wniesienia sprzeciwu w
-                    przypadkach określonych w przepisach tej ustawy. 7.3. Dane osobowe pozostawione w Aplikacji nie zostaną sprzedane ani udostępnione osobom trzecim. 7.4. Dane osobowe zbierane są w celu umożliwienia Użytkownikom korzystania z Aplikacji. Dane
-                    osobowe Użytkowników mogą ponadto służyć do weryfikacji, czy osoba rejestrująca spełnia wymagane przez Regulamin i przepisy prawne warunki. 7.5. Podanie danych osobowych jest dobrowolne, jednak niezbędne do prawidłowego korzystania z Aplikacji.
-                    7.6. W Aplikacji udostępniona jest możliwość rejestracji przez Facebook, konto Google oraz konto na Twiterze - usługi te działają niezależnie od Operatora i posiadają własne polityki dotyczące prywatności oraz regulaminy.</p><br> 
-
-                8. REKLAMACJA<br>
-                <p class="regul">8.1. Wszelkie reklamacje związane z korzystaniem z Aplikacji oraz ze świadczeniem za jej pośrednictwem usług, a także pytania dotyczące korzystania z Aplikacji należy kierować do Operatora na adres poczty elektronicznej pod adresem piotr.wojcikiewicz@op.pl.
-                    8.2. Reklamacja powinna zawierać w swej treści: imię, nazwisko, adres e-mail Użytkownika (podane przy Rejestracji), jak również dokładny opis i wskazanie przyczyny reklamacji. 8.3. Operator odpowie na zgłoszenie w możliwie najkrótszym czasie.</p><br>
-
-                9. PRAWA AUTORSKIE, LICENCJA<br> 
-                <p class="regul">9.1. Prawa autorskie oraz prawa własności intelektualnej do Aplikacji jako całości należą do Operatora lub innych uprawnionych podmiotów trzecich i objęte są ochroną ustawy z dnia 4 lutego 1994 r. o prawie autorskim
-                    i prawach pokrewnych (Dz. U. 1994 r. nr 24 poz. 83 z późn. zm.) oraz innych przepisów powszechnie obowiązującego prawa. Ochrona przyznana Aplikacji obejmuje wszystkie formy jej wyrażenia. 9.2. Użytkownik korzystający z Aplikacji nie otrzymuje
-                    na własność żadnych praw autorskich do Aplikacji. Użytkownikowi udzielana jest jedynie – na warunkach wskazanych w Regulaminie – niezbywalna, ważna na całym świecie i niewyłączna licencja uprawniająca go do korzystania z Aplikacji w sposób
-                    zgodny z jej przeznaczeniem, z niniejszym Regulaminem. 9.3. W ramach udzielonej licencji Użytkownik jest uprawniony do korzystania z Aplikacji poprzez jej pobieranie, instalowanie, trwałe lub czasowe zwielokrotnianie w pamięci urządzenia mobilnego
-                    Użytkownika, jej stosowanie i wyświetlanie w zakresie niezbędnym do korzystania z Aplikacji zgodnie z jej przeznaczeniem oraz wyłącznie na własny, niekomercyjny użytek. 9.4. Znaki handlowe Usługodawcy oraz podmiotów trzecich powinny być używane
-                    zgodnie z obowiązującymi przepisami prawa.</p><br> 
-                10. POSTANOWIENIA KOŃCOWE<br> 
-                <p class="regul">10.1. W sprawach nieuregulowanych w Regulaminie zastosowanie mają odpowiednie przepisy powszechnie obowiązującego prawa. 10.2. Regulamin dostępny jest za pośrednictwem Aplikacji
-                    oraz na stronie internetowej: http://v-ie.uek.krakow.pl/~s189957/wirtualna-apteczka-regulamin.pdf.</p>
-            </div>
-            <div data-role="footer" class="ui-footer-fixed">
-                <a href="#sign" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
-            </div>
+        <div data-role="footer" class="ui-footer-fixed">
+            <a href="#sign" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
         </div>
-        <!-- / page-->
-        <div data-role="page" id="loginpage">
-            <div data-role="header">
-                <a href="#start" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
-                <p>
-                    Zaloguj się do aplikacji
-                </p>
-            </div>
-            <div role="main" class="ui-content">
-                <div id="robotofont" style="display: none;">
-                    Zalogowany jako:
-                    <p id="loggedas"></p>
-                    <p id="feedback"></p>
-                </div>
-                <form id="formularz" method="post" action="">
-                    <input data-clear-btn="true" id="userEmail2" placeholder="e-mail" value="" type="text"><br>
-                    <input data-clear-btn="true" placeholder="hasło" id="userPass2" value="" autocomplete="off" type="password"><br>
-                </form>
-                <p>
-                    <button type="button" id="login">Zaloguj</button><br>
-                </p>
-                <center>
-                    <h5>
-                        <hr width="30%" align="left" style="float:left" /> lub
-                        <hr width="30%" align="right" style="float:right" />
-                    </h5>
-                </center>
-            </div>
-            <div>
-                <button type="button" id="logingoogle">Zaloguj z konta Google</button><br>
-                <button type="button" id="loginfacebook">Zaloguj z konta Facebook</button>
-            </div>
+    </div>
+    <!-- login page-->
+    <div data-role="page" id="loginpage">
+        <div data-role="header">
+            <a href="#start" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
+            <p>
+                Zaloguj się do aplikacji
+            </p>
         </div>
-        <script>
-            var screen = $.mobile.getScreenHeight();
-            var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
-            var footer = $(".ui-page-active .ui-footer ").hasClass("ui-footer-fixed ") ? $(".ui-page-active .ui-footer ").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
-            /* content div has padding of 1em = 16px (32px top+bottom). This step
-             can be skipped by subtracting 32px from content var directly. */
-            var contentCurrent = $(".ui-page-active .ui-content ").outerHeight() - $(".ui-page-active .ui-content ").height();
-            var content = screen - header - footer - contentCurrent;
-            $(".ui-page-active .ui-content ").height(content);
-        </script>
-    </body>
+        <div role="main" class="ui-content">
+            <div id="robotofont" style="display: none;">
+                Zalogowany jako:
+                <p id="loggedas"></p>
+                <p id="feedback"></p>
+            </div>
+            <form id="formularz" method="post" action="">
+                <input data-clear-btn="true" id="userEmail2" placeholder="e-mail" value="" type="text"><br>
+                <input data-clear-btn="true" placeholder="hasło" id="userPass2" value="" autocomplete="off" type="password"><br>
+            </form>
+            <p>
+                <button type="button" id="login">Zaloguj</button><br>
+            </p>
+            <center>
+                <h5>
+                    <hr width="30%" align="left" style="float:left" /> lub
+                    <hr width="30%" align="right" style="float:right" />
+                </h5>
+            </center>
+        </div>
+        <div>
+            <button type="button" id="logingoogle">Zaloguj z konta Google</button><br>
+            <button type="button" id="loginfacebook">Zaloguj z konta Facebook</button>
+        </div>
+    </div>
+    <script>
+        var screen = $.mobile.getScreenHeight();
+        var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
+        var footer = $(".ui-page-active .ui-footer ").hasClass("ui-footer-fixed ") ? $(".ui-page-active .ui-footer ").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
+        /* content div has padding of 1em = 16px (32px top+bottom). This step
+         can be skipped by subtracting 32px from content var directly. */
+        var contentCurrent = $(".ui-page-active .ui-content ").outerHeight() - $(".ui-page-active .ui-content ").height();
+        var content = screen - header - footer - contentCurrent;
+        $(".ui-page-active .ui-content ").height(content);
+    </script>
+</body>
 
 </html>

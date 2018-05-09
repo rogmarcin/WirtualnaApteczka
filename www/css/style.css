@@ -5,19 +5,23 @@
     max-width: 100%;
     font-weight: bold;
 }
+
 .logo {
     margin-block-start: 50pt;
 }
+
 .regul {
     max-width: 100%;
     text-align: justify;
     font-family: Cambria;
 }
+
 [data-role="header"],
 [data-role="footer"] {
     text-align: center;
     font-family: Cambria;
 }
+
 .text-center {
     text-align: center;
 }
