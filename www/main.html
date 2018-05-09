@@ -34,41 +34,24 @@
             Wirtualna Apteczka
         </div>
         <!-- Miejsce na wstawienie avatara użytkownika-->
-        <div role="main" class="ui-content">
-            <center>
-                <img src="img/avatar.jpg" style="max-width: 100%">
-                <p style="font-family: Cambria">Zalogowany jako:</p>
-                <h3 class="load-user-email"></h3>
-            </center>
+        <div role="main" class="ui-content text-center">
+
+            <img src="img/avatar.jpg" style="max-width: 100%">
+            <p style="font-family: Cambria">Zalogowany jako:</p>
+            <h3 class="load-user-email"></h3>
+
         </div>
-        <div>
-            <ul data-role="listview" data-insert="true">
-                <li>
-                    <a href="#list_of_medicines">
-                        <img src="img/apteczka1.jpg">
-                        <h2>Twoja Apteczka</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#settings">
-                        <img src="img/setings.png">
-                        <h2>Ustawienia konta</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="logout();">
-                        <img src="img/logout.jpg">
-                        <h2>Wyloguj</h2>
-                    </a>
-                </li>
-            </ul>
+        <div data-role="listview" data-insert="false">
+            <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-bars">Twoja Apteczka</a>
+            <a href="#settings" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-gear">Informacja o użytkowniku</a>
+            <a href="#" class="ui-btn ui-shadow ui-btn-icon-left ui-icon-arrow-l" onclick="logout();">Wyloguj</a>
         </div>
     </div>
     <!-- /page-->
-    <!-- Page user settings -->
-    <div data-role="page" id="settings">
-        <div data-role="header">
-            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
+    <!-- Page user settings 
+        <div data-role="page" id="settings">
+            <div data-role="header">
+                <a href="#user_account" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
             <center>Twoje konto</center>
         </div>
         <div role="main" class="ui-content text-center">
@@ -117,8 +100,7 @@
             </ul>
         </div>
     </div>
-    <!-- /page-->
-    <!-- Start of change_login_haslo page -->
+    Start of change_login_haslo page
     <div data-role="page" id="change_login_haslo">
         <div data-role="header">
             <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
@@ -126,7 +108,7 @@
                 <center>Data change</center>
             </h1>
         </div>
-        <!-- /header -->
+        <!-- /header 
         <div role="main " class="ui-content ">
             <form>
                 <input name="textinput-11" id="textinput-11" placeholder="Username or Email" value="" type="text">
@@ -146,10 +128,10 @@
                 </center>
             </h4>
         </div>
-        <!-- /content -->
+        <!-- /content 
     </div>
-    <!-- /page -->
-    <!-- Start of change_avatar -->
+    <!-- /page
+    <!-- Start of change_avatar 
     <div data-role="page" id="change_avatar">
         <div data-role="header">
             <a href="#settings" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
@@ -157,13 +139,13 @@
                 <center>Data change</center>
             </h1>
         </div>
-        <!-- /header -->
+        <!-- /header 
         <div role="main " class="ui-content ">
             <center>
                 <img src="img/avatar1.jpg">
             </center>
         </div>
-        <!-- /content -->
+        <!-- /content 
         <div data-role="footer">
             <h4>
                 <a href="#choose_foto">
@@ -174,10 +156,10 @@
                 </a>
             </h4>
         </div>
-        <!-- /footer -->
+        <!-- /footer 
     </div>
     <!-- /page -->
-    <!-- Start of choose foto -->
+    <!-- Start of choose foto 
     <div data-role="page" id="choose_foto">
         <div data-role="header">
             <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext" a>no text</a>
@@ -185,16 +167,16 @@
                 <center>Wybierz zdjęcie</center>
             </h1>
         </div>
-        <!-- /header -->
+        <!-- /header 
         <div role="main " class="ui-content ">
 
-            <!--miejsce na kod do wyboru zdjęcia-->
+            <!--miejsce na kod do wyboru zdjęcia
 
         </div>
-        <!-- /content -->
+        <!-- /content 
     </div>
     <!-- /page -->
-    <!-- Start of take foto -->
+    <!-- Start of take foto 
     <div data-role="page" id="take_foto">
         <div data-role="header">
             <a href="#change_avatar" class="ui-btn ui-icon-carat-l ui-btn-icon-notext">no text</a>
@@ -202,13 +184,13 @@
                 <center>Zrób zdjęcie</center>
             </h1>
         </div>
-        <!-- /header -->
+        <!-- /header 
         <div role="main " class="ui-content ">
 
-            <!--miejsce na kod do wyboru zdjęcia-->
+            <!--miejsce na kod do wyboru zdjęcia
 
         </div>
-        <!-- /content -->
+        <!-- /content 
     </div>
     <!-- /page -->
     <!-- page list of medicines -->
