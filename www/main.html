@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,21 +34,16 @@
         <div data-role="header">
             Wirtualna Apteczka
         </div>
-
         <div role="main" class="ui-content text-center">
-
             <img src="img/avatar.jpg" style="max-width: 100%">
             <p style="font-family: Cambria">Zalogowany jako:</p>
             <h3 class="load-user-email"></h3>
-
         </div>
         <div data-role="listview" data-insert="false">
             <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-bars">Twoja Apteczka</a>
-            <a href="#settings" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-gear">Informacja o użytkowniku</a>
             <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-arrow-l" onclick="logout();">Wyloguj</a>
         </div>
     </div>
-
     <!-- page list of medicines -->
     <div data-role="page" id="list_of_medicines">
         <div data-role="header">
@@ -88,7 +84,6 @@
             <a href="#" onclick="window.history.back()" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
         </div>
     </div>
-
     <!-- page add medicines-->
     <div data-role="page" id="add_medicines">
         <div data-role="header" class="ui-header">
@@ -107,7 +102,8 @@
                     <input data-clear-btn="true" name="medicament-name" id="medicament-name" placeholder="Nazwa leku" value="" type="text">
 
                     <label for="medicament-description"></label>
-                    <input data-clear-btn="true" name="medicament-description" id="medicament-description" placeholder="Opis leku (np. na gól głowy)" value="" type="text">
+                    <input data-clear-btn="true" name="medicament-description" id="medicament-description" placeholder="Opis leku (np. na gól głowy)"
+                        value="" type="text">
 
                     <label for="medicament-date">Data zakupu</label>
                     <input data-clear-btn="false" name="medicament-date" id="medicament-date" value="" type="date">
@@ -116,7 +112,8 @@
                     <input data-clear-btn="false" name="medicament-expire-at" id="medicament-expire-at" value="" type="date">
 
                     <label for="medicament-dosage"></label>
-                    <input data-clear-btn="true" name="medicament-dosage" id="medicament-dosage" placeholder="Dawkowanie (np. 3 x 1 tabletka)" value="" type="text">
+                    <input data-clear-btn="true" name="medicament-dosage" id="medicament-dosage" placeholder="Dawkowanie (np. 3 x 1 tabletka)"
+                        value="" type="text">
 
                     <input name="medicament-id" type="hidden" />
 
@@ -128,7 +125,8 @@
 
         <div data-role="footer" class="ui-footer-fixed">
             <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-b">Anuluj</a>
-            <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
+            <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window"
+                data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
 
             <div data-role="popup" class="success-dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
                 <div role="main" class="ui-content text-center">
