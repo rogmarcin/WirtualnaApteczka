@@ -6,7 +6,7 @@ var Helper = {
           theme: "a",
         });
     },
-    hideLoader: function() {
+    hideLoader: function(callback) {
         $.mobile.loading("hide");
     },
     dialog: function(textContent, callback) {
@@ -71,5 +71,11 @@ var Helper = {
         } else {
             return s[0].toUpperCase() + s.slice(1);
         }
+    },
+    redirectToMedicament: function(id) {
+        console.log('received medicament id: ' + id);
+        MedicamentController.get(id, function() {
+            location.hash = "medicine";
+        });
     }
 };

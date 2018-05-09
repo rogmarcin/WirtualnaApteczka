@@ -1,27 +1,10 @@
 /* global MedicamentController */
 
-function redirectToMedicament(id) {
-    console.log('received medicament id: ' + id);
-    MedicamentController.get(id);
-    location.hash = "medicine";
-}
-
 var Application = {
     // Application Constructor
     initialize: function() {
-//        this.bindEvents();
-
-        plugin.notification.local.on("click", function (notification) {
-            redirectToMedicament(notification.data);
-        });
-        
-        var medicamentId = window.sessionStorage.getItem("medicamentId");
-        window.sessionStorage.removeItem("medicamentId");
-        
-        if(medicamentId !== null && medicamentId !== "") {
-            redirectToMedicament(medicamentId);
-        }
-        
+        this.redirectOnNotification();
+        this.bindEvents();
         
         MedicamentController.list();
         MedicamentController.notify();
@@ -33,6 +16,11 @@ var Application = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+        if(typeof plugin !== "undefined") {
+            plugin.notification.local.on("click", function (notification) {
+                Helper.redirectToMedicament(notification.data);
+            });
+        }
 //        document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -45,5 +33,13 @@ var Application = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 //        console.log('Received Event: ' + id);
+    },
+    redirectOnNotification: function() {
+        var medicamentId = window.sessionStorage.getItem("medicamentId");
+        window.sessionStorage.removeItem("medicamentId");
+        
+        if(medicamentId !== null && medicamentId !== "") {
+            Helper.redirectToMedicament(medicamentId);
+        }
     }
 };

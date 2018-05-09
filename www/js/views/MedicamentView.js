@@ -77,13 +77,10 @@ MedicamentView = {
                     var success = false;
                     
                     $.each(keywords, function(idx, keyword) {
-                        console.log(keyword);
                         if(element.search.search(keyword) !== -1) {
                             success = true;
                         }
                     })
-                    
-                    console.log(success);
                     
                     if(success !== true) {
                         return false;

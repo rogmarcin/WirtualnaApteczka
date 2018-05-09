@@ -30,6 +30,7 @@ var MedicamentController = (function() {
     };
     
     this.submitSave = function() {
+        Helper.showLoader();
         var result = {};
         var success = true;
         
@@ -43,6 +44,7 @@ var MedicamentController = (function() {
         });
         
         if(success === false) {
+            Helper.hideLoader();
             Helper.dialog('Wszystkie pola są wymagane');
             return false;
         }
@@ -117,10 +119,13 @@ var MedicamentController = (function() {
             firebase.database().ref('medicaments/' + userId +'/' + id).set(data);
         }
         
+        Helper.hideLoader();
+        
         this.view.renderAddSuccessDialog();
     };
     
     this.list = function() {
+        Helper.showLoader();
         var parent = this;
         var userId = Helper.userId();
         
@@ -128,18 +133,24 @@ var MedicamentController = (function() {
             .ref('/medicaments/' + userId)
             .orderByChild("/medicament-name")
             .on('value', function(snapshot) {
+                Helper.hideLoader();
                 parent.view.renderList(snapshot);
         });
     };
     
-    this.get = function(id) {
+    this.get = function(id, callback) {
+        Helper.showLoader();
         var parent = this;
         var userId = Helper.userId();
         
         firebase.database()
             .ref('/medicaments/' + userId + '/' + id)
             .on('value', function(snapshot) {
+                Helper.hideLoader();
                 parent.view.renderSingle(snapshot.val());
+                if(typeof callback !== "undefined") {
+                    callback();
+                }
         });
     }
     
@@ -168,6 +179,7 @@ var MedicamentController = (function() {
     }
     
     this.searchByLeaflet = function(event, caller) {
+        Helper.showLoader();
         var parent = this;
         var userId = Helper.userId();
         
@@ -177,6 +189,7 @@ var MedicamentController = (function() {
             .ref('/medicaments/' + userId)
             .orderByChild("/medicament-name")
             .once('value', function(snapshot) {
+                Helper.hideLoader();
                 parent.view.renderList(snapshot, filter.toLowerCase(), "#list_of_medicines_search");
                 location.hash = "#list_of_medicines_search";
         });
@@ -185,35 +198,38 @@ var MedicamentController = (function() {
     this.notify = function() {
         var userId = Helper.userId();
         
-        firebase.database()
-            .ref('/medicaments/' + userId)
-            .orderByChild("/medicament-name")
-            .on('value', function(snapshot) {
-                snapshot.forEach(function (snapshotElem) {
-                    var medicament = snapshotElem.val();
-                    
-                    plugin.notification.local.cancel(
-                        medicament['medicament-id'],
-                        function() {
-                            console.log('canceled notifications');
-                    });
-                    
-                    var date = new Date();
-                    var minutes = date.getMinutes() + 1;
-                    date.setMinutes(minutes);
-                    
-                    if (Helper.isExpired(medicament['medicament-expire-at'])) {
-                        plugin.notification.local.schedule({
-                            id: medicament['medicament-id'],
-                            title: `Koniec ważności ${medicament['medicament-name']}`,
-                            message: `Lek ${medicament['medicament-name']} utracił swoją ważność`,
-                            firstAt: date,
-                            foreground: true,
-                            data: medicament['medicament-id']
+        if(typeof plugin !== "undefined") {
+            firebase.database()
+                .ref('/medicaments/' + userId)
+                .orderByChild("/medicament-name")
+                .on('value', function(snapshot) {
+                    snapshot.forEach(function (snapshotElem) {
+                        var medicament = snapshotElem.val();
+
+                        plugin.notification.local.cancel(
+                            medicament['medicament-id'],
+                            function() {
+                                console.log('canceled notifications');
                         });
-                    }
-                });
-        });
+
+                        var date = new Date();
+                        var minutes = date.getMinutes() + 1;
+                        date.setMinutes(minutes);
+
+                        if (Helper.isExpired(medicament['medicament-expire-at'])) {
+                            plugin.notification.local.schedule({
+                                id: medicament['medicament-id'],
+                                title: `Koniec ważności ${medicament['medicament-name']}`,
+                                message: `Lek ${medicament['medicament-name']} utracił swoją ważność`,
+                                firstAt: date,
+                                foreground: true,
+                                data: medicament['medicament-id']
+                            });
+                        }
+                    });
+            });
+        }
+        
     };
     
     return this;
