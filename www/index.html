@@ -12,11 +12,15 @@
 
     <script src="js/firebase/config.js"></script>
     <script src="js/firebase/login.js"></script>
-    <script src="js/Notifications.js"></script>
 
     <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script>
+        function redirectToMedicament(id) {
+            console.log('stores medicament id on login: ' + id);
+            window.sessionStorage.setItem("medicamentId", id);
+        }
+        
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 window.location.href = "main.html#user_account";

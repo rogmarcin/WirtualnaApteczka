@@ -1,11 +1,26 @@
 /* global MedicamentController */
 
+function redirectToMedicament(id) {
+    console.log('received medicament id: ' + id);
+    MedicamentController.get(id);
+    location.hash = "medicine";
+}
+
 var Application = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
         
+        var medicamentId = window.sessionStorage.getItem("medicamentId");
+        window.sessionStorage.removeItem("medicamentId");
+        
+        if(medicamentId !== null && medicamentId !== "") {
+            redirectToMedicament(medicamentId);
+        }
+        
         MedicamentController.list();
+        MedicamentController.notify();
+        
         $('.load-user-email').html(Helper.userEmail());
     },
     // Bind Event Listeners

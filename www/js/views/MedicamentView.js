@@ -63,8 +63,6 @@ MedicamentView = {
             "data-autodividers": true
         });
 
-        window.medicaments = medicaments;
-
         medicaments.forEach(function (element) {
             var element = element.val();
 

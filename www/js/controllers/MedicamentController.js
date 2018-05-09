@@ -182,5 +182,43 @@ var MedicamentController = (function() {
         });
     };
     
+    this.notify = function() {
+        var userId = Helper.userId();
+        
+        firebase.database()
+            .ref('/medicaments/' + userId)
+            .orderByChild("/medicament-name")
+            .on('value', function(snapshot) {
+                snapshot.forEach(function (snapshotElem) {
+                    var medicament = snapshotElem.val();
+                    
+                    plugin.notification.local.cancel(
+                        medicament['medicament-id'],
+                        function() {
+                            console.log('canceled notifications');
+                    });
+                    
+                    var date = new Date();
+                    var minutes = date.getMinutes() + 1;
+                    date.setMinutes(minutes);
+                    
+                    if (Helper.isExpired(medicament['medicament-expire-at'])) {
+                        plugin.notification.local.schedule({
+                            id: medicament['medicament-id'],
+                            title: `Koniec ważności ${medicament['medicament-name']}`,
+                            message: `Lek ${medicament['medicament-name']} utracił swoją ważność`,
+                            firstAt: date,
+                            foreground: true,
+                            data: medicament['medicament-id']
+                        });
+                    }
+                });
+        });
+        
+        plugin.notification.local.on("click", function (notification) {
+            redirectToMedicament(notification.data);
+        });
+    };
+    
     return this;
 })();
