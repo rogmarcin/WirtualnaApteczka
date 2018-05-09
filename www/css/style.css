@@ -5,29 +5,19 @@
     max-width: 100%;
     font-weight: bold;
 }
-
 .logo {
     margin-block-start: 50pt;
 }
-
-#botton1 {
-    float: left;
-    width: 50%;
-    background-color: rgb(255, 255, 255);
+.regul {
+    max-width: 100%;
+    text-align: justify;
+    font-family: Cambria;
 }
-
-#botton2 {
-    float: right;
-    width: 50%;
-    background-color: lightgreen;
-}
-
 [data-role="header"],
 [data-role="footer"] {
     text-align: center;
     font-family: Cambria;
 }
-
 .text-center {
     text-align: center;
 }
