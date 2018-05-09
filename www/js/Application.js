@@ -9,7 +9,11 @@ function redirectToMedicament(id) {
 var Application = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+//        this.bindEvents();
+
+        plugin.notification.local.on("click", function (notification) {
+            redirectToMedicament(notification.data);
+        });
         
         var medicamentId = window.sessionStorage.getItem("medicamentId");
         window.sessionStorage.removeItem("medicamentId");
@@ -17,6 +21,7 @@ var Application = {
         if(medicamentId !== null && medicamentId !== "") {
             redirectToMedicament(medicamentId);
         }
+        
         
         MedicamentController.list();
         MedicamentController.notify();

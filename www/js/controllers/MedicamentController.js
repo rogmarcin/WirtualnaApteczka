@@ -214,10 +214,6 @@ var MedicamentController = (function() {
                     }
                 });
         });
-        
-        plugin.notification.local.on("click", function (notification) {
-            redirectToMedicament(notification.data);
-        });
     };
     
     return this;
