@@ -1,109 +1,133 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="cordova.js"></script>
+        <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+        <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/vendors/firebase.js"></script>
 
-    <script src="cordova.js"></script>
-    <script src="js/vendors/jquery-2.1.1/jquery-2.1.1.min.js"></script>
-    <script src="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+        <script src="js/firebase/config.js"></script>
+        <script src="js/firebase/authorized.js"></script>
 
-    <script src="js/firebase/config.js"></script>
-    <script src="js/firebase/authorized.js"></script>
+        <script src="js/api/client.js"></script>
 
-    <script src="js/api/client.js"></script>
+        <script src="js/helpers/Helper.js"></script>
+        <script src="js/views/MedicamentView.js"></script>
+        <script src="js/controllers/MedicamentController.js"></script>
+        <script src="js/Application.js"></script>
 
-    <script src="js/helpers/Helper.js"></script>
-    <script src="js/views/MedicamentView.js"></script>
-    <script src="js/controllers/MedicamentController.js"></script>
-    <script src="js/Application.js"></script>
-
-    <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-        crossorigin="anonymous">
-</head>
-
-<body>
-    <!-- Page user account -->
-    <div data-role="page" id="user_account">
-        <div data-role="header">
-            Wirtualna Apteczka
+        <link rel="stylesheet" href="js/vendors/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="js/vendors/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-all.min.css" />
+    </head>
+    <body>
+        <div data-role="page" id="user_account">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-b" style="width: 100%">
+                        <p>Wirtualna Apteczka</p>
+                    </div>
+                </div>
+            </div>
+            <div role="main" class="ui-content text-center">
+                <div>
+                    <i class="fas fa-user-md fa-10x"></i>
+                </div>
+                <!--<img src="img/avatar.jpg" style="max-width: 100%">-->
+                <p style="font-family: Cambria">Zalogowany jako:</p>
+                <h3 class="load-user-email"></h3>
+                
+                <div style="margin-top: 2em">
+                    <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-bars">Twoja Apteczka</a>
+                    
+                </div>
+            </div>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-power ui-btn-b" onclick="logout();">Wyloguj</a>
+            </div>
         </div>
-        <div role="main" class="ui-content text-center">
-            <img src="img/avatar.jpg" style="max-width: 100%">
-            <p style="font-family: Cambria">Zalogowany jako:</p>
-            <h3 class="load-user-email"></h3>
+        
+        <div data-role="page" id="list_of_medicines">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a href="#search" class="ui-btn ui-icon-search ui-btn-icon-right ui-corner-all ui-btn-icon-notext"></a>
+                    </div>
+                    <div class="ui-block-b">
+                        <p>Lista leków w Apteczce</p>
+                    </div>
+                    <div class="ui-block-c">
+                        <a href="#add_medicines" onclick="MedicamentController.resetSaveForm()" class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-right ui-btn-icon-notext">no text</a>
+                    </div>
+                </div>
+            </div>
+            <div data-role="main" class="ui-content text-center" style="padding-top: 0">
+                Brak leków w apteczce
+            </div>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#user_account" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
+            </div>
         </div>
-        <div data-role="listview" data-insert="false">
-            <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-bars">Twoja Apteczka</a>
-            <a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-arrow-l" onclick="logout();">Wyloguj</a>
+        <div data-role="page" id="list_of_medicines_search">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-b" style="width: 100%">
+                        <p>Wyniki wyszukiwania</p>
+                    </div>
+                </div>
+            </div>
+            <div data-role="main" class="ui-content text-center">
+                Nie podano kryterów wyszukiwania
+            </div>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót do listy</a>
+            </div>
         </div>
-    </div>
-    <!-- page list of medicines -->
-    <div data-role="page" id="list_of_medicines">
-        <div data-role="header">
-            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
-            <center>Lista leków w Apteczce</center>
-            <a href="#add_medicines" onclick="MedicamentController.resetSaveForm()" class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-right ui-btn-icon-notext">no text</a>
-            <a href="#search" class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all ui-btn-icon-notext">no text</a>
+        <div data-role="page" id="medicine">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a href="#search" class="ui-btn ui-icon-search ui-btn-icon-right ui-corner-all ui-btn-icon-notext"></a>
+                    </div>
+                    <div class="ui-block-b">
+                        <p>Lista leków w Apteczce</p>
+                    </div>
+                    <div class="ui-block-c">
+                        <a href="#add_medicines" onclick="MedicamentController.resetSaveForm()" class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-right ui-btn-icon-notext">no text</a>
+                    </div>
+                </div>
+            </div>
+            <div data-role="main" class="ui-content text-center">
+                Nie wybrano leku
+            </div>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#list_of_medicines" onclick="MedicamentController.remove(event, this)" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b remove-medicament-btn">Usuń z apteczki</a>
+                <a href="#" onclick="window.history.back()" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót do listy</a>
+            </div>
         </div>
-
-        <div data-role="main" class="ui-content text-center">
-            Brak leków w apteczce
-        </div>
-    </div>
-    <div data-role="page" id="list_of_medicines_search">
-        <div data-role="header" class="ui-header">
-            <center>Wyniki wyszukiwania</center>
-        </div>
-        <div data-role="main" class="ui-content text-center">
-            Nie podano kryterów wyszukiwania
-        </div>
-
-        <div data-role="footer" class="ui-footer-fixed">
-            <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót do list</a>
-        </div>
-    </div>
-    <div data-role="page" id="medicine">
-        <div data-role="header" class="ui-header">
-            <a href="#user_account" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
-            <center>Lista leków w Apteczce</center>
-            <a href="#add_medicines" class="ui-btn ui-icon-plus ui-corner-all ui-btn-icon-right ui-btn-icon-notext" onclick="MedicamentController.resetSaveForm()">no text</a>
-            <a href="#search" class="ui-btn ui-corner-all ui-icon-search ui-btn-icon-right ui-btn-icon-notext">no text</a>
-        </div>
-        <div data-role="main" class="ui-content text-center">
-            Nie wybrano leku
-        </div>
-        <div data-role="footer" class="ui-footer-fixed">
-            <a href="#list_of_medicines" onclick="MedicamentController.remove(event, this)" class="ui-btn ui-shadowu i-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left ui-btn-b remove-medicament-btn">Usuń z apteczki</a>
-            <a href="#" onclick="window.history.back()" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b">Powrót</a>
-        </div>
-    </div>
-    <!-- page add medicines-->
-    <div data-role="page" id="add_medicines">
-        <div data-role="header" class="ui-header">
-            <a href="#list_of_medicines" class="ui-btn ui-icon-carat-l ui-corner-all ui-btn-icon-notext">no text</a>
-            <center>Dodaj lek</center>
-        </div>
-
-        <div data-role="panel" data-position="left" data-display="reveal" class="search-results">
-            <div class="ui-panel-inner"></div>
-        </div>
-
-        <div data-role="main" class="ui-content text-center">
-            <div class="ui-field-contain">
+        <!-- page add medicines-->
+        <div data-role="page" id="add_medicines">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-b" style="width: 100%">
+                        <p>Dodaj lek</p>
+                    </div>
+                </div>
+            </div>
+            <div data-role="panel" data-position="left" data-display="reveal" class="search-results">
+                <div class="ui-panel-inner"></div>
+            </div>
+            <div data-role="main" class="ui-content text-center">
                 <form class="add-medicament">
                     <label for="medicament-name"></label>
                     <input data-clear-btn="true" name="medicament-name" id="medicament-name" placeholder="Nazwa leku" value="" type="text">
 
                     <label for="medicament-description"></label>
                     <input data-clear-btn="true" name="medicament-description" id="medicament-description" placeholder="Opis leku (np. na gól głowy)"
-                        value="" type="text">
+                           value="" type="text">
 
                     <label for="medicament-date">Data zakupu</label>
                     <input data-clear-btn="false" name="medicament-date" id="medicament-date" value="" type="date">
@@ -113,56 +137,79 @@
 
                     <label for="medicament-dosage"></label>
                     <input data-clear-btn="true" name="medicament-dosage" id="medicament-dosage" placeholder="Dawkowanie (np. 3 x 1 tabletka)"
-                        value="" type="text">
+                           value="" type="text">
 
                     <input name="medicament-id" type="hidden" />
 
-                    <a href="#add_medicines" onclick="MedicamentController.submitSearch(event, this);" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus">Szukaj ulotki</a>
+                    <a href="#add_medicines"
+                       onclick="MedicamentController.submitSearch(event, this);"
+                       class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-plus"
+                       style="margin-top: 3em"
+                   >Szukaj ulotki</a>
                 </form>
+                <div class="link-results"></div>
             </div>
-            <div class="link-results"></div>
-        </div>
 
-        <div data-role="footer" class="ui-footer-fixed">
-            <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-b">Anuluj</a>
-            <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window"
-                data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#list_of_medicines" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-b">Anuluj</a>
+                <a href="#add_medicines" onclick="MedicamentController.submitSave(event, this);" data-rel="popup" data-position-to="window"
+                   data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
 
-            <div data-role="popup" class="success-dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-                <div role="main" class="ui-content text-center">
-                    <p>Lek został dodany poprawnie</p>
-                    <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-b">OK</a>
+                <div data-role="popup" class="success-dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+                    <div role="main" class="ui-content text-center">
+                        <p>Lek został dodany poprawnie</p>
+                        <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-b">OK</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- search medicines page -->
-    <div data-role="page" id="search" class="search-page-container">
-        <div role="main" class="ui-content text-center">
-            <div>
-                <h1>Szukaj</h1>
-                <label for="search"></label>
-                <input name="labelContent" value="" placeholder="ból głowy" type="search">
+        <!-- search medicines page -->
+        <div data-role="page" id="search" class="search-page-container">
+            <div data-role="header" class="custom-header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-b" style="width: 100%">
+                        <p>Przeszukaj ulotkę</p>
+                    </div>
+                </div>
+            </div>
+            <div role="main" class="ui-content text-center">
+                <div>
+                    <input name="labelContent" value="" placeholder="Zespół niespokojnych nóg..." type="search">
+                </div>
+            </div>
+            <div data-role="footer" class="ui-footer-fixed">
+                <a href="#list_of_medicines" data-role="button"
+                   class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left ui-btn-b"
+               >Powrót</a>
+                <a href="#" data-role="button"
+                   onclick="MedicamentController.searchByLeaflet(event, this);"
+                   class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-search ui-btn-icon-left ui-btn-b"
+               >Szukaj</a>
             </div>
         </div>
-        <div data-role="footer" class="ui-footer-fixed">
-            <p>
-                <a href="#list_of_medicines" data-role="button">Anuluj</a>
-                <a href="#" data-role="button" onclick="MedicamentController.searchByLeaflet(event, this);">Szukaj</a>
-            </p>
-        </div>
-    </div>
 
-    <script>
-        var screen = $.mobile.getScreenHeight();
-        var header = $(".ui-page-active .ui-header ").hasClass("ui-header-fixed ") ? $(".ui-page-active .ui-header ").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
-        var footer = $(".ui-page-active .ui-footer ").hasClass("ui-footer-fixed ") ? $(".ui-page-active .ui-footer ").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
-        /* content div has padding of 1em = 16px (32px top+bottom). This step
-            can be skipped by subtracting 32px from content var directly. */
-        var contentCurrent = $(".ui-page-active .ui-content ").outerHeight() - $(".ui-page-active .ui-content ").height();
-        var content = screen - header - footer - contentCurrent;
-        $(".ui-page-active .ui-content ").height(content);
-    </script>
-</body>
-
+        <script>
+            function setContentHeight() {
+                setTimeout(function () {
+                    var screen = $.mobile.getScreenHeight();
+                    var header = $(".ui-page-active .ui-header").hasClass("ui-header-fixed") ? $(".ui-page-active .ui-header").outerHeight() - 1 : $(".ui-page-active .ui-header ").outerHeight();
+                    var footer = $(".ui-page-active .ui-footer").hasClass("ui-footer-fixed") ? $(".ui-page-active .ui-footer").outerHeight() - 1 : $(".ui-page-active .ui-footer ").outerHeight();
+                    /* content div has padding of 1em = 16px (32px top+bottom). This step
+                     can be skipped by subtracting 32px from content var directly. */
+                    var contentCurrent = $(".ui-page-active .ui-content").outerHeight() - $(".ui-page-active .ui-content").height();
+                    var content = screen - header - footer - contentCurrent;
+                    console.log(content);
+                    $(".ui-page-active .ui-content").height(content);
+                }, 500);
+            }
+            
+            $(document).ready(function() {
+                setContentHeight();
+            });
+            
+            $(window).on('hashchange', function() {
+                setContentHeight();
+            });
+        </script>
+    </body>
 </html>

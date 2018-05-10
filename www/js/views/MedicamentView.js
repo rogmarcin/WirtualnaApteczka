@@ -58,7 +58,7 @@ MedicamentView = {
         var list = $('<ul>', {
             "data-role": "listview",
             "data-filter": true,
-            "data-filter-placeholder": "Filtruj",
+            "data-filter-placeholder": "Ibuprofen...",
             "data-theme": "a",
             "data-autodividers": true
         });

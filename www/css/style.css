@@ -1,8 +1,7 @@
 .napis_logo {
-    margin-top: 18%;
+    margin-bottom: 20%;
     font-size: 25pt;
     font-family: Cambria;
-    max-width: 100%;
     font-weight: bold;
 }
 
@@ -19,9 +18,31 @@
 [data-role="header"],
 [data-role="footer"] {
     text-align: center;
-    font-family: Cambria;
 }
 
-.text-center {
+.text-center, .center {
     text-align: center;
+}
+
+.ui-content {
+    /*background-color: #e8f7ff !important;*/
+}
+
+.custom-header,
+[data-role="footer"] {
+    /*background-color: #ADE2FF !important;*/
+}
+
+.custom-header a.ui-icon-carat-l {
+    margin-bottom: 11px;
+    margin-top: 11px;
+}
+
+.custom-header .ui-block-a,
+.custom-header .ui-block-c {
+    width: 15%;
+}
+
+.custom-header .ui-block-b {
+    width: 70%;
 }
