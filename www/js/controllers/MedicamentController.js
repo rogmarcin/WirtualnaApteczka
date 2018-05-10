@@ -169,9 +169,7 @@ var MedicamentController = (function() {
             .ref('/medicaments/' + userId + '/' + id)
             .remove();
     
-        firebase.database()
-            .ref('leaflets/' + userId +'/' + id)
-            .remove();
+        parent.removeNotification(id);
     
         Helper.dialog("Lek został usunięty", function() {
             location.hash = $(caller).attr("href");
@@ -196,6 +194,7 @@ var MedicamentController = (function() {
     };
     
     this.notify = function() {
+        var parent = this;
         var userId = Helper.userId();
         
         if(typeof plugin !== "undefined") {
@@ -205,12 +204,10 @@ var MedicamentController = (function() {
                 .on('value', function(snapshot) {
                     snapshot.forEach(function (snapshotElem) {
                         var medicament = snapshotElem.val();
-
-                        plugin.notification.local.cancel(
-                            medicament['medicament-id'],
-                            function() {
-                                console.log('canceled notifications');
-                        });
+                        
+                        parent.removeNotification(
+                            medicament['medicament-id']
+                        );
 
                         var date = new Date();
                         var minutes = date.getMinutes() + 1;
@@ -230,6 +227,16 @@ var MedicamentController = (function() {
             });
         }
         
+    };
+    
+    this.removeNotification = function(id) {
+        if(typeof plugin !== "undefined") {
+            plugin.notification.local.cancel(
+                id,
+                function() {
+                    console.log('canceled notifications');
+            });
+        }
     };
     
     return this;
