@@ -42,14 +42,17 @@ var Helper = {
         return user ? user.uid : null;
     },
     uuid: function() {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = (d + Math.random()*16)%16 | 0;
-            d = Math.floor(d/16);
-            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-        });
-        
-        return uuid;
+//        var d = new Date().getTime();
+//        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+//            var r = (d + Math.random()*16)%16 | 0;
+//            d = Math.floor(d/16);
+//            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+//        });
+//        
+//        return uuid;
+        var min = 1000000;
+        var max = 1500000
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
     },
     isExpired: function(dateString) {
         var date = new Date(dateString);
