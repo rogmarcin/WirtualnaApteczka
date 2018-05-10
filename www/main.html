@@ -156,7 +156,7 @@
                    data-transition="pop" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-b">Dodaj</a>
 
                 <div data-role="popup" class="success-dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-                    <div role="main" class="ui-content text-center">
+                    <div role="main" class="ui-content text-center ui-content-popup">
                         <p>Lek został dodany poprawnie</p>
                         <a href="#list_of_medicines" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-b">OK</a>
                     </div>
@@ -199,7 +199,7 @@
                     var contentCurrent = $(".ui-page-active .ui-content").outerHeight() - $(".ui-page-active .ui-content").height();
                     var content = screen - header - footer - contentCurrent;
                     console.log(content);
-                    $(".ui-page-active .ui-content").height(content);
+                    $(".ui-page-active .ui-content").not('.ui-content-popup').height(content);
                 }, 500);
             }
             

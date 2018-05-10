@@ -13,7 +13,7 @@ var Helper = {
         var id = 'helper-dialog';
         var html = `
 <div data-role="popup" id="${id}" data-overlay-theme="b" data-theme="a" data-dismissible="false" style="max-width:400px;">
-    <div role="main" class="ui-content" style="text-align: center">
+    <div role="main" class="ui-content ui-content-popup" style="text-align: center">
         <p>{content}</p>
         <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Ok</a>
     </div>
@@ -42,14 +42,6 @@ var Helper = {
         return user ? user.uid : null;
     },
     uuid: function() {
-//        var d = new Date().getTime();
-//        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-//            var r = (d + Math.random()*16)%16 | 0;
-//            d = Math.floor(d/16);
-//            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-//        });
-//        
-//        return uuid;
         var min = 1000000;
         var max = 1500000;
         return Math.floor(Math.random() * (max - min + 1) ) + min;

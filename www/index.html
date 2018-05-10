@@ -200,8 +200,8 @@
                     var contentCurrent = $(".ui-page-active .ui-content").outerHeight() - $(".ui-page-active .ui-content").height();
                     var content = screen - header - footer - contentCurrent;
                     console.log(content);
-                    $(".ui-page-active .ui-content").height(content);
-                }, 100);
+                    $(".ui-page-active .ui-content").not('.ui-content-popup').height(content);
+                }, 500);
             }
             
             $(document).ready(function() {
