@@ -26,4 +26,7 @@
 - Piotr Wójcikiewicz, 189957, KrZUIs2012
 - Mateusz Lis, 189459, KrZUIs2011
 
-### Linki do: [Trello](https://trello.com/b/WSEx3njt/bai-project), [Prototypu](https://marvelapp.com/50j70c1/screen/40631680)                oraz [Raportu prac](https://docs.google.com/spreadsheets/d/1YVdTL1Zja5aQZH5QC62PctRy5FQ39eq1WUqobofWAsE/edit#gid=0) 
+### Linki do: [Trello](https://trello.com/b/WSEx3njt/bai-project), [Prototypu](https://marvelapp.com/50j70c1/screen/40631680)                oraz [Raportu prac](https://docs.google.com/spreadsheets/d/1YVdTL1Zja5aQZH5QC62PctRy5FQ39eq1WUqobofWAsE/edit#gid=0)
+
+### Aby zainstalować aplikację pobierz plik [.apk](https://build.phonegap.com/apps/3152061/download/android) 
+### lub skanuj kod QR: <img src="http://v-ie.uek.krakow.pl/~s190804/qr.png" style="max-height: 100px; vertical-align: middle;">
