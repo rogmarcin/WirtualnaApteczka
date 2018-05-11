@@ -142,12 +142,21 @@ MedicamentView = {
     <h3>${medicament['medicament-name']}</h3>
     <p>${medicament['medicament-description']}</p>
     <p><strong>Data zakupu:</strong> ${medicament['medicament-date']}</p>
-    <p><strong>Data ważności:</strong> ${medicament['medicament-expire-at']}</p>
+    {expire-date-element}
     <p><strong>Dawkowanie zalecane przez lekarza:</strong> ${medicament['medicament-dosage']}</p>
     ${leaflet}
 </div>
 `;
-
+        var template = `<strong>Data ważności:</strong> ${medicament['medicament-expire-at']}`;
+        if(Helper.isExpired(medicament['medicament-expire-at'])) {
+            var wraper = `<p class="expired-medicament-date">{template}</p>`.replace('{template}', template);
+        } else {
+            var wraper = `
+<p>{template}</p>`.replace('{template}', template);
+        }
+        
+        elem = elem.replace('{expire-date-element}', wraper);
+        
         $('#medicine .ui-content').html(elem);
         $('#medicine .remove-medicament-btn').data('id', medicament['medicament-id']);
     }

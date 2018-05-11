@@ -46,3 +46,10 @@
 .custom-header .ui-block-b {
     width: 70%;
 }
+
+.expired-medicament-date {
+    background-color: #d9534f;
+    color: #FFFFFF;
+    text-shadow: none;
+    border-radius: 10px;
+}
